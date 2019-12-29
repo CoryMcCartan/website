@@ -14,9 +14,19 @@ header
     background: url(/images/home-cover.jpg)
     background-position: center
     background-size: cover
+    z-index: 3
 
 .vspacer
     height: calc(440px - 3.5rem)
+
+.header-bar
+    height: $header-height
+    background: $bg
+    position: sticky
+    top: 0
+    margin: -$header-height 0 -1em -100%
+    width: 300%
+    z-index: 2
 
 .home-grid
     display: flex
@@ -42,6 +52,7 @@ header
 
 .links div
     column-count: 2
+    line-height: 2
 
 
 @media screen and (max-width: $break-small)

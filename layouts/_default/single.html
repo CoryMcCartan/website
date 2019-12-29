@@ -1,4 +1,6 @@
 {{ define "main" }}
+    {{ with .Params.hidetitle }}
+    {{ else }}
     <h1 class="title">
         <div class="text">{{- .Title -}}</div>
         <div class="triangle"></div>
@@ -12,6 +14,7 @@
     <section class="publishinfo">
         <span class="date">{{ .Date.Format "January 2, 2006" }}</span>
     </section>
+    {{ end }}
     <article class="main-content">
         {{ .Content }}
     </article>

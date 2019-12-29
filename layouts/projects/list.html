@@ -1,0 +1,24 @@
+{{ define "main" }}
+    <h1 class="title">
+        <div class="text">{{- .Title -}}</div>
+        <div class="triangle"></div>
+        <div class="spacer"></div>
+    </h1>
+    <section class="main-content">
+    {{ .Content }}
+    </section>
+    <section class="project-list">
+        {{ range .Pages }}
+        <div class="project">
+            <span class="date">{{ .Date.Format "2006" }}</span>
+            <a href="{{ .RelPermalink }}">
+                <h2 class="project-title">{{ .Title }}</h2>
+                {{ with .Description }}
+                <h3 class="subtitle">{{ . }}</h3>
+                {{ end }}
+                {{/* <div class="excerpt">{{ .Summary }}</div> */}}
+            </a>
+        </div>
+        {{ end }} 
+    </section>
+{{ end }}

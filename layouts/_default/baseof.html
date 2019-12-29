@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ with .Params.noindex }}
+        <meta name="robots" content="noindex">
+    {{ end }}
+    <!-- TODO: opengraph and other meta SEO tags -->
+    <title>{{ block "title" . }}
+        {{- print .Title " • " .Site.Title -}}
+    {{ end }}</title>
+    
+    <link rel="icon" href="/images/logo-64.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,300i,700&display=sawp" rel="stylesheet">
+    {{ $style := resources.Get "sass/main.sass" | toCSS | minify }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ if .IsHome }}
+        {{ $style := resources.Get "sass/home.sass" | toCSS | minify }}
+        <link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ end }}
+    {{ range .Params.css }}
+    <link rel="stylesheet" href="{{ . }}">
+    {{ end }}
+
+    {{ range .Params.js }}
+    <script src="{{ . }}"></script>
+    {{ end }}
+</head>
+<body>
+    {{ partial "header.html" . }}
+    <main class="center">
+        {{ block "main" . }}
+        {{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+</body>
+</html>

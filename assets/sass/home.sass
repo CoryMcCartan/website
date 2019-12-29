@@ -1,0 +1,51 @@
+@import "vars"
+
+$header-bg: change-color($bg, $alpha: 0.75)
+
+header
+    background: $header-bg
+
+.cover
+    position: absolute
+    left: 0
+    top: 0
+    width: 100vw
+    height: 440px
+    background: url(/images/home-cover.jpg)
+    background-position: center
+    background-size: cover
+
+.vspacer
+    height: calc(440px - 3.5rem)
+
+.home-grid
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+
+    .post-list
+        flex-grow: 1
+        flex-shrink: 1
+        margin-right: 1em
+        width: 0.5*$content-width
+
+    .project-list
+        flex-grow: 1
+        flex-shrink: 1
+        width: 0.3*$content-width
+
+        .project
+            max-width: $content-width
+
+
+@media screen and (max-width: $break-small)
+    div.cover
+        height: 320px
+
+    div.vspacer
+        height: calc(320px - 3.5rem)
+
+    .home-grid .post-list .post::nth-child(n+5)
+        display: none
+    .home-grid .project-list .project::nth-child(n+4)
+        display: none

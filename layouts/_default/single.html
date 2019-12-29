@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <h1 class="title">
+        <div class="text">{{- .Title -}}</div>
+        <div class="triangle"></div>
+        <div class="spacer"></div>
+    </h1>
+    {{ with .Description }}
+    <h2 class="subtitle">
+        {{- . -}}
+    </h2>
+    {{ end }}
+    <section class="publishinfo">
+        <span class="date">{{ .Date.Format "January 2, 2006" }}</span>
+    </section>
+    <article class="main-content">
+        {{ .Content }}
+    </article>
+{{ end }}

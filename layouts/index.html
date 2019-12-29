@@ -1,0 +1,49 @@
+{{ define "title" }}
+    Cory McCartan
+{{ end }}
+
+
+{{ define "main" }}
+<!--<img src="images/home-cover.jpg" class="cover">-->
+<div class="cover"></div>
+<div class="vspacer"></div>
+{{ .Content }}
+<div class="home-grid">
+    <section class="posts post-list">
+        {{ range first 10 (where .Site.RegularPages "Section" "posts") }}
+        <div class="post">
+            <a href="{{ .RelPermalink }}">
+                <h2 class="post-title">{{ .Title }}</h2>
+                <div class="flex-row">
+                    {{ with .Description }}
+                    <h3 class="subtitle">{{ . }}</h3>
+                    {{ end }}
+                    <span class="spacer"></span>
+                    <span class="date">{{ .Date.Format "Jan. 2" }}</span>
+                </div>
+                <div class="excerpt">{{ .Summary }}</div>
+            </a>
+        </div>
+        {{ end }} 
+    </section>
+
+    <section class="projects project-list">
+        {{ range first 5 (where .Site.RegularPages "Section" "projects") }}
+        <div class="project">
+            <a href="{{ .RelPermalink }}">
+                <h2 class="project-title">{{ .Title }}</h2>
+                {{ with .Description }}
+                <h3 class="subtitle">{{ . }}</h3>
+                {{ end }}
+                {{/* <div class="excerpt">{{ .Summary }}</div> */}}
+            </a>
+        </div>
+        {{ end }} 
+    </section>
+</div>
+
+<section class="links">
+    <h1>Links</h1>
+    <a href="/maps-scale/">Side-by-side maps</a>
+</section>
+{{ end }}

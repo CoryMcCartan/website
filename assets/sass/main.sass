@@ -58,6 +58,18 @@ svg
     border-radius: 2px
     font-size: 0.85rem
     padding: 0.5em
+
+.scroll-interactive .text
+    z-index: 6
+    position: relative
+    padding: 2em 0
+    background: change-color($bg, $alpha: 0.85)
+
+.scroll-interactive .text.center
+    text-align: center
+
+.scroll-interactive .text + .text
+    margin-top: 100vh
     
 
 figure 
@@ -119,6 +131,9 @@ header .center
     font-size: 20px
     font-weight: normal
     letter-spacing: 2px
+    animation-name: title
+    animation-duration: 10s
+    animation-fill-mode: forwards
 
     a
         text-decoration: none
@@ -226,14 +241,14 @@ article p
     margin-right: -1em
 
 .project-list .project
-    width: 0.3*$content-width
+    width: 0.35*$content-width
     flex-grow: 1
     flex-shrink: 1
     margin: 1em 1em 0 0 
-    padding: 0.75rem
+    padding: 1rem
     background: white
     border-radius: 3px
-    min-height: 15rem
+    min-height: 10rem
     border-bottom: 1px solid $gray
 
 .project-list .project-title
@@ -276,3 +291,10 @@ footer
 
     .title > .spacer
         border-left: 1px solid $bg
+
+
+@keyframes title 
+    0%
+        opacity: 1
+    100%
+        opacity: 0

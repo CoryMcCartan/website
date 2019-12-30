@@ -6,7 +6,7 @@ publishdate: 2019-12-01
 slug: unions-2019
 js: [
     "https://d3js.org/d3.v5.min.js", 
-    "http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js",
     ]
 ---
 

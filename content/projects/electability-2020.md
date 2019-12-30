@@ -32,7 +32,19 @@ methodology than that provided below.
 </div>
 </div>
 
-## Methodology Summary
+
+## Why does this approach work?
+While head-to-head polls are generally not very predictive, the demographic 
+patterns they reveal turn out to be much more durable, as the figure below
+illustrates. Polled demographic patterns (a candidate's support in a demographic
+group, minus their overall support), on the horizontal axis, are compared to
+actual election reults on the vertical. Polls are shown for presidential
+elections since 2002, using available Quinnipiac demographic cross tabs, and
+exit poll results.
+
+{{< figure src="/images/electability_early_polls.png" >}}
+
+## Methodology summary
 
 I did some matrix algebra to basically estimate the (linear model) coefficients
 on each demographic category (white, college-educated, gender, etc.) and their

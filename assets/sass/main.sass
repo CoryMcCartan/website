@@ -23,6 +23,20 @@ a, a:visited
 a:hover
     color: $fg
 
+.leadin
+    font-size: 0.9rem
+    text-transform: uppercase
+
+.highlight
+    padding: 1px 2px
+    margin: 0 -1px
+    border-radius: 3px
+    background: #dd6
+
+.dark.highlight
+    background: #568
+    color: $bg
+
 
 .spacer
     flex-grow: 1
@@ -54,22 +68,38 @@ svg
 .tooltip
     z-index: 7
     position: absolute
-    background: #fffc
-    border-radius: 2px
+    background: #fffd
+    border-radius: 3px
     font-size: 0.85rem
     padding: 0.5em
+    top: 0
+
+.scroll-interactive
+    margin-bottom: 90vh
 
 .scroll-interactive .text
     z-index: 6
     position: relative
-    padding: 2em 0
+    padding: 1.5em
+    left: -1.5em
+    border-radius: 3px
     background: change-color($bg, $alpha: 0.85)
+    backdrop-filter: blur(4px)
+
+    p
+        margin: 0.5em 0 0 0
+    p:first-child
+        margin: 0
 
 .scroll-interactive .text.center
     text-align: center
+    font-size: 1.4rem
 
 .scroll-interactive .text + .text
     margin-top: 100vh
+
+.scroll-interactive .text + .text.extra
+    margin-top: 120vh
     
 
 figure 
@@ -173,7 +203,7 @@ main
     padding-left: 100%
 
     .text
-        padding: 0.4em 0.1em 0.5em 0
+        padding: 0.4em 0.4em 0.5em 0
         min-width: 5em
 
     .triangle 

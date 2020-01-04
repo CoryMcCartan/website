@@ -62,8 +62,12 @@ a:hover
     border-top: 1px solid $gray
     border-bottom: 1px solid $gray
 
-svg
-    overflow: visible
+svg, .chart
+    overflow: visible !important
+    z-index: -1
+
+svg text
+    user-select: none
 
 .tooltip
     z-index: 7
@@ -75,13 +79,14 @@ svg
     top: 0
 
 .scroll-interactive
-    margin-bottom: 90vh
+    margin-bottom: 30vh
 
 .scroll-interactive .text
     z-index: 6
     position: relative
     padding: 1.5em
     left: -1.5em
+    width: calc(100% + 3em)
     border-radius: 3px
     background: change-color($bg, $alpha: 0.85)
     backdrop-filter: blur(4px)
@@ -307,6 +312,15 @@ footer
 
     li
         margin: 0 1.15em 0 0
+
+    .scroll-interactive .text
+        padding: 1em
+        left: -1em
+        width: calc(100% + 2em)
+        line-height: 1.1
+
+        p
+            line-height: 1.1
 
 @media screen and (max-width: $content-width)
     .title > .triangle 

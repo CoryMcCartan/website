@@ -1,7 +1,7 @@
 ---
 title: The State of Our Unions
 description: A closer look at the size, strength, and structure of American labor.
-date: 2020-01-01
+date: 2020-01-06
 publishdate: 2019-12-01
 slug: unions-2019
 js: [
@@ -26,10 +26,9 @@ earlier this year, using Joe Biden&rsquo;s presidential campaign kickoff at a
 union hall as an opportunity to trot out its tried-and-true union-bashing
 lines.
 
-"Big Labor," the right's favorite moniker for America's unions, suggests a
-force to be reckoned with, a monolithic entity---one with ambition, strategy,
-and means. "Big Labor" and "Big Government" are supposed to go hand in hand. The
-[AFL-CIO
+"Big Labor" suggests a force to be reckoned with, a monolithic entity---one
+with ambition, strategy, and means. "Big Labor" and "Big Government" are
+supposed to go hand in hand. The [AFL-CIO
 headquarters](https://www.google.com/maps/place/AFL-CIO/@38.9010963,-77.0383432,17z/data=!4m5!3m4!1s0x89b7b7a3b596fd43:0xb9f2db5b9ddc26c1!8m2!3d38.9010963!4d-77.0361543),
 after all, sits just across Lafayette Square from the White House.
 
@@ -76,14 +75,14 @@ green are <span class="dark highlight" style="background: #73bc5e">affiliated
 with the Change to Win Federation</span> (CTW), which broke away from the
 AFL-CIO in 2005. Unions in yellow are <span class="highlight"
 style="background: #eebc3b">independent.</span> You can hover over each union
-to learn more.
+to learn more, and click to highlight one.
 
-<div class="chart" id="intl-chart"></div>
+<div class="chart" id="intl-chart-a1"></div>
 
 <div class="text" id="a1s20">
 <p>
-    The <b>NEA</b> and the <b>AFT</b>, which both represent teachers,
-    collectively represent over 4.5 million workers. Other large unions include
+    The <b>NEA</b> and the <b>AFT</b>, both teachers' unions, collectively
+    represent over 4.5 million workers. Other large unions include
     <b>AFSCME</b>, which represents state and local government employees,
     <b>UFCW</b>, <b>SEIU</b>, and the <b>Teamsters (IBT)</b>, which each
     represent workers in a diverse array of industries.
@@ -96,6 +95,10 @@ to learn more.
 </p>
 </div>
 
+<div class="text" id="a1s25">
+    And another <b>760,681</b> belong to independent, unaffiliated local unions.
+</div>
+
 <div class="text" id="a1s30">
     For comparison, here are the largest public and private employers in the
     U.S., sized by the number of their employees: <b>Walmart</b> (2.2 million)
@@ -104,27 +107,34 @@ to learn more.
 
 <div class="extra text" id="a1s40">
 <p>
-    The NEA may have the most members, but that doesn't necessarily translate
-    to financial strength. When we size each union by its net assets, a
-    different set of "big" unions emerges.
+    So in one sense, unions are &ldquo;big&rdquo; enough to go up against the
+    largest employers in the country. But while a union like the NEA may have
+    the most members, that doesn't necessarily translate to financial resources,
+    which are often a more important factor. When we size each union by its net
+    assets, a different set of "big" unions emerges.
 </p>
 <p>
-    The <b>UAW</b> is the wealthiest union, with <b>$1 billion</b> in net
-    assets, mostly consisting of its large strike fund. Other wealthy unions,
-    like the <b>USW</b>, <b>CJA</b>, and <b>IBEW</b>, consist mainly of workers
-    in declining industries (like steel) or industries that have largely
-    de-unionized (like construction).
+    The <b>UAW</b> is the wealthiest international union, with <b>$1
+    billion</b> in net assets, mostly consisting of its large strike fund.
+    Other wealthy unions, like the <b>USW</b>, <b>CJA</b>, and <b>IBEW</b>,
+    consist mainly of workers in declining industries (like steel) or
+    industries that have significantly de-unionized (like construction).
 </p>
 </div>
 
 <div class="text" id="a1s50">
 <p>
     For comparison, here's <b>Berkshire Hathaway</b>, the U.S. corporation
-    with the most equity: $348.7 billion.
+    with the most net assets: $348.7 billion.
 </p>
 <p>
     That's <b>over forty times</b> the net assets of all the international
     unions combined. In a single company.
+</p>
+<p>
+    With corporations operating on this kind of scale, it's no surprise that
+    the UFCW (net assets of $336 million) has struggled to unionize Walmart
+    (net assets of $80 <i>billion</i>). 
 </p>
 </div>
 
@@ -133,10 +143,244 @@ to learn more.
 </div>
 </section>
 
+<!-- ------------------------------------------------------------- -->
+<!-- <div style="height: 25vh"></div> -->
+
+# Savers and Spenders
+
+<section class="scroll-interactive" id="a2">
+
+Beyond the size of their membership, another important way that unions differ
+is in the scale of their financial resources relative to their membership,
+and how they choose to spend these resources.
+
+Below, unions are arranged from left to right in order of their per-member 
+net assets. This is a good measure of unions' wealth, as it accounts for 
+the size of the membership---we would expect larger unions to be able
+to collect more dues, and therefore to have more net assets.
+
+<span id="a2s20"></span>
+The wealthiest union on a per-member basis is the <b>American Train Dispatchers
+Association</b>, a small craft union. The <b>UAW</b>, the union with the most
+total net assets, still is near the top on a per-member basis.  The largest
+unions, like the <b>NEA</b>, generally have fewer net assets per member due to
+their extremely large size.
+
+<div class="chart" id="intl-chart-a2"></div>
+
+<div class="text" id="a2s30">
+    The picture changes slightly when we sort unions by their spending per
+    member. For example,  both the <b>IBEW</b> and the <b>UAW</b> are in the
+    upper half of unions by wealth. But while the UAW has around quadruple the
+    net assets per member of the IBEW, the IBEW spends almost triple what the
+    UAW does per member.
+</div>
+
+<div class="text" id="a2s40">
+<p>
+    This split becomes even clearer when unions are ranked by how much they
+    spend, relative to how much they're worth. 
+</p>
+<p>
+    Unions like the <b>AFT</b> or the <b>AFGE</b> spent around three times their
+    total assets in 2018, while the <b>UAW</b> and the <b>CJA</b> spent less
+    than a quarter of their total assets.
+</p>
+</div>
+
+<div class="center text">
+    But <i>how much</i> unions spend may not matter as much as <i>where</i>
+    they spend it.
+</div>
+
+<div class="text" id="a2s45">
+<p>
+    Most union spending, after taxes and AFL-CIO dues, can be roughly broken up
+    into four categories:
+</p>
+<ul>
+    <li>
+        <b>Representational</b>: contract negotiations, grievance handling,
+        corporate research, litigation, and <i>new worker organizing</i>.
+    </li>
+    <li>
+        <b>Political</b>: spending on political candidates (including through
+        PACs) and lobbying.
+    </li>
+    <li>
+        <b>Benefit & grant</b>: pensions, health and life insurance,
+        charitable contributions, scholarship funds, and more.
+    </li>
+    <li>
+        <b>Overhead</b>: membership meeting, conferences, supplies, rent,
+        support staff, member education programs, and more.
+    </li>
+</ul>
+<p>
+    Several important unions which prioritize these categories differently are
+    highlighted below.
+</p>
+<p>
+    It's important to note that local unions also spend in these categories,
+    and are not included in the figures below.
+</p>
+</div>
+
+<div class="text" id="a2s50">
+    Of the very large unions, the <b>SEIU</b> spends the largest portion of its
+    budget on representation and organizing.  The <b>IUJAT</b>, the oldest
+    union in continuous existence in the U.S., and the <b>AFA</b>, which has
+    been organizing agressively in major airlines, also top the chart for
+    representational spending.
+</div>
+
+<div class="text" id="a2s70">
+<p>
+    Unsurprisingly, the <b>NEA</b>, <b>AFT</b> and other largely public-sector
+    unions like <b>AFSCME</b> and the <b>IAFF</b>, are heavily involved in
+    lobbying. The <b>SEIU</b> is also known for its political spending, like the
+    $28 million it spent on Barack Obama's campaign in 2008. 
+</p>
+<p>
+    Notably, the much smaller <b>IUJAT</b> and <b>AFA</b>, which both spend
+    heavily on representation and organizing, each spend less than 2% of their
+    budgets on lobbying and politics. 
+</p>
+</div>
+
+<div class="text" id="a2s75">
+    The <b>NEA</b> stands out for spending nearly half its budget on benefits,
+    grants, and contributions.  It donates heavily to nonprofit organizations
+    across the country. The <b>SEIU</b>, in contrast, spends around 7% of its
+    budget on benefits and grants.
+</div>
+
+<div class="text" id="a2s80">
+    There are few clear patterns in how much unions spend on administration and
+    overhead. Some, like the <b>IAFF</b>, spend nearly 60%; others, like the
+    <b>IUJAT</b>, spend 5%.
+</div>
+
+<div style="height: 80vh"></div>
+
+<div class="text">
+<p>
+    We can actually visualize all of this together, mapping unions onto a 
+    triangle, below, based on their spending priorities. A union which spends
+    100% of its budget on representation and organizing would be located at
+    the top of the triangle, while a union that spent a third of its budget on
+    representation, a third on grants, and a third on lobbying and overhead would
+    be located in the middle.
+</p>
+<p>
+    While there are unions spread all over the chart, the striking pattern is 
+    just how many unions are clustered in the bottom right.  Nearly all
+    international unions spend a majority of their budgets on administration,
+    overhead, and lobbying.  There are good reasons for this, in many cases.
+</p>
+<p>
+    But some of the unions which have grown most aggressively&mdash;like the
+    SEIU&mdash; or which are widely recognized as democratic and
+    innovative&mdash;like UNITE HERE, the AFA, or UE&mdash;are closer to the
+    middle. And many shrinking unions&mdash;like IBEW, CJA, or IUOE&mdash;are
+    stuck in the bottom-right corner.
+</p>
+</div>
+
+<div class="chart" id="intl-chart-a3"></div>
+
+</section>
+
+
+<!-- ------------------------------------------------------------- -->
+<div style="margin-top: -15vw"></div>
+
+# People Power
+
+<section class="scroll-interactive" id="a4">
+
+Money to organize and represent workers means little without the people who
+make unions work: officers, organizers and staff.
+
+Unions employ vastly different numbers of staff relative to their size.
+Unsurprisingly, very large unions like the <b>NEA</b> have high member-to-staff
+ratios (4,164 workers per staff member), while small unions like the
+Inlandboatmen's Union (<b>IBU</b>) have very low ratios (25 workers per staff
+member). But even some large unions like the <b>USW</b> and <b>UAW</b> manage
+to keep low member-to-staff ratios, while some small unions like the Marine
+Engineers (<b>MEBA</b>) and <b>IUJAT</b> have ratios exceeding 3,000-to-1.
+
+<div class="chart" id="intl-chart-a4"></div>
+
+<div class="text" id="a4s20">
+While there is large variation in how many staff unions hire, there is slightly
+less variation in what these staff are paid.  Most major unions pay their staff
+a median salary between $70,000 and $130,000 a year, though some, like the 
+<b>IUEC</b>, pay as much as $212,000 a year.  Of the unions with at least a
+million members, the <b>IBT</b> pays its staff the least: just over $80,000
+a year.
+</div>
+
+<div class="text" id="a4s30">
+For comparison, the dashed line shows the median wage for union workers,
+before benefits.
+</div>
+
+<div class="text">
+    Finally, international unions are just the tip of the iceberg. The majority
+    of representational and organizing work happens at the local level.  And
+    while unfortunately there doesn't exist readily accessible complete data on
+    all local unions in the country, across all sectors, we can look at one
+    important aspect of local unions: their size.
+</div>
+
+<div class="text" id="a4s40">
+<p>
+    Below, unions are arranged by the average size of their locals. Unions must
+    strike a balance between the added efficiency of pooling resources across
+    many workers and workplaces, and the challenges in representing large
+    numbers of workers at once.
+</p>
+<p>
+    The <b>SEIU</b> is by far the most centralized union, with more than 18,000
+    members in its average local. On the other end of the spectrum, craft
+    unions like the Insulators (<b>HFIA</b>) or city-based unions like the East
+    coast Longshormen (<b>ILA</b>) have smaller locals.
+</p>
+</div>
+
+</section>
+
+<div style="height: calc(15vh + 35vw)"></div>
+
+# Conclusion
+
+American unions are as varied as the workers and professions they represent.
+They differ in their membership, their financial resources, their local union
+structure, their spending priorities, and their staffing levels.  Uniting them,
+however, is their shared mission to improve the lot of the average worker, and
+to give working people everywhere more of a say in how our society is run.
+
+And now labor has an opportunity. Half of nonunion workers---<b>67 million
+people</b>---[say they would join a union if they
+could](https://www.pbs.org/newshour/nation/a-growing-number-of-americans-want-to-join-a-union),
+a massive increase over previous years, and public support for unions is higher 
+than it has been in decades.  To make the most of this opportunity, unions will
+have to organize aggressively, democratize, and learn from one another.
+
+Some of the differences between unions are justified. Others are accidents of 
+history.  But unions can set budgets and priorities, and can partner and merge.
+Making these decisions strategically, and with an eye to what has worked for 
+other unions, will be necessary to ensuring that unions and workers can win in
+the decades ahead.
+
+
+<div style="height: 15em"></div>
 
 _Data provided by the [Office of Labor-Management
 Standards](https://www.dol.gov/olms/), a division of the U.S. Department of
-Labor._
+Labor. Download cleaned data
+[here](https://github.com/CoryMcCartan/website/tree/master/static/data/unions/)._
 
 
 <script src="/js/unions-2019.js"></script>

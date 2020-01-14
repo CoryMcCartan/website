@@ -10,7 +10,7 @@ summary: >
 ---
 
 The [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set), generated
-by iterating the map _f(z)=z<sup>2</sup>+c_, looks somethign like this, when
+by iterating the map _f(z)=z<sup>2</sup>+c_, looks something like this, when
 colored by the number of iterations to blowup:
 
 {{< figure src="https://upload.wikimedia.org/wikipedia/commons/2/21/Mandel_zoom_00_mandelbrot_set.jpg"

@@ -6,7 +6,19 @@
     {{ with .Params.noindex }}
         <meta name="robots" content="noindex">
     {{ end }}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79274202-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-79274202-4');
+    </script>
+
     <!-- TODO: opengraph and other meta SEO tags -->
+    {{ template "_internal/opengraph.html" . }}
+
     <title>{{ block "title" . }}
         {{- print .Title " • " .Site.Title -}}
     {{ end }}</title>

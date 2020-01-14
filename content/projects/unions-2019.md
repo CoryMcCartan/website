@@ -1,30 +1,40 @@
 ---
-title: The State of Our Unions
+title: One Industrial Union Grand?
 description: A closer look at the size, strength, and structure of American labor.
-date: 2020-01-06
-publishdate: 2019-12-01
+date: 2020-01-14
 slug: unions-2019
+images: 
+    - /images/union-article-promo.png
 js: [
     "https://d3js.org/d3.v5.min.js", 
     "https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js",
     ]
 ---
 
-{{< figure src="/images/union-snow.jpg" class="w100" 
-caption="Harvard graduate student workers on the picket lines, December 2019." >}}
+{{< figure src="/images/aflcio-hq.jpg" class="w100" 
+caption="AFL-CIO headquarters, Washington, D.C." >}}
 
-<!--
->how unions are on the decline but also resurging. actually poorly
->understood from a structural persp.  good time to ask: what do unions
->actually look like in 2019?
--->
+<br />
+<div style="font-style: italic; max-width: 5in; width: 100%; margin: 0 auto;">
+<div style="margin-left: 2em; text-indent: -2em">
+<p style="margin: 0">There is power there is power in a band of workingmen,</p>
+<p style="margin: 0">When they stand hand in hand,</p>
+<p style="margin: 0">That&rsquo;s a power, that&rsquo;s a power</p>
+<p style="margin: 0">That must rule in every land—</p>
+<p style="margin: 0">One Industrial Union Grand.</p>
+</div>
+<div style="text-align: right">
+&mdash; &ldquo;<a href="https://youtu.be/mSDh_qVXkFk" target="_blank">There is
+Power in a Union</a>,&rdquo; Joe Hill
+</div>
+</div>
+<br />
 
 <span class="leadin">&ldquo;Big Labor&rsquo;s Big Shrink,&rdquo;</span> gloated
 the headline of a [_Wall Street Journal_
 editorial](https://www.wsj.com/articles/big-labors-big-shrink-11556580340)
-earlier this year, using Joe Biden&rsquo;s presidential campaign kickoff at a
-union hall as an opportunity to trot out its tried-and-true union-bashing
-lines.
+last year, using Joe Biden&rsquo;s presidential campaign kickoff at a union
+hall as an opportunity to trot out its tried-and-true union-bashing lines.
 
 "Big Labor" suggests a force to be reckoned with, a monolithic entity---one
 with ambition, strategy, and means. "Big Labor" and "Big Government" are
@@ -36,36 +46,68 @@ But just as the forces of American capital are not controlled by the Chamber of
 Commerce---which is also located across from the White House---labor's power
 isn't managed out of D.C., doled out by union bosses as part of a Big Plan to
 destroy productivity and end freedom as we know it. American labor is a
-patchwork: a tangled web of national and local unions, federations, councils,
-joint boards, and nonprofits.
+patchwork---a tangled web of national and local unions, federations,
+councils, joint boards, and nonprofits.
 
 That's not to say that labor's power isn't concentrated in certain regions,
-sectors, or unions. But to ignore the diversity of labor's contituent parts
-is to fail to grasp to complexity of the labor movement, and the challenges it
+sectors, or unions. But to ignore the diversity of labor's constituent parts
+is to fail to grasp the complexity of the labor movement, and the challenges it
 faces. Despite recent optimism and a wave of [public sector
 strikes](https://labornotes.org/blogs/2018/10/teacher-strike-wave-numbers),
 labor's power is still waning, [especially in the private
 sector](https://jacobinmag.com/2019/06/private-sector-strike-wave-union-strategy).
-And despite SEIU's aggressive aquisition strategy, and the mergers of several
-national unions over the past few decades, unions in the United States remain
-more fragmented than their peers abroad.  Understanding this fragmented
-landscape is critical to building a grand strategy for American labor in this
-centurty.
+And despite  the mergers of several national unions over the past few decades,
+unions in the United States remain more fragmented than their peers abroad.
+Understanding this fragmented landscape is critical to building a winning
+strategy for American labor in the next decade.
 
-# What does "Big" mean, anyway?
+To that end, we'll look at the [overall size and
+structure](#labor-is-big-but-not-that-big) of American unions, their [spending
+patterns](#some-unions-are-spenders-others-are-savers), and their [internal
+structure and staffing](#people-power).
+
+# Labor is big, but not that big
 
 <section class="scroll-interactive" id="a1">
 
-In 2018, there were **156 million people employed in the United States**: 20
-million in the public sector, and 136 million in the private sector. Of these,
-just over 10 percent were union members---a total of **14.7 million union
-workers.** These workers are split roughly evenly between the public and
-private sectors, meaning that **93.6 percent** of private-sector workers are
-not represented by a union.
+In 2018, there were **[156 million people
+employed](https://www.bls.gov/news.release/empsit.t01.htm) in the United
+States**: 20 million in the public sector, and 136 million in the private
+sector. Among those who work for salaries or wages, [just over 10
+percent](https://www.bls.gov/news.release/archives/union2_01182019.htm) were
+union members---a total of **14.7 million union workers.** These workers are
+split roughly evenly between the public and private sectors, meaning that
+almost **94 percent** of private-sector workers are not represented by a union.
+
+<div style="width: 100%; color: white; text-align: center; font-size: 0.9rem;
+text-transform: uppercase; line-height: 1em">
+<table width="100%">
+<tr><th colspan=2 style="color: black">Private sector</th></tr>
+<tr height=204>
+<td width="5.58%" style="background: #5fb0e6">U<br>n<br>i<br>o<br>n</td>
+<td width="94.4%" style="background: #666">Non-union</td>
+</tr>
+</table>
+
+<table width="100%" style="margin-top: -2px">
+<tr height=30>
+<td width="35.5%" style="background: #5fb0e6">Union</td>
+<td width="64.5%" style="background: #666">Non-union</td>
+</tr>
+<tr><th colspan=2 style="color: black">Public sector</th></tr>
+</table>
+</div>
+
+Union membership rates vary drastically by state, as the map below shows.
+Unsurprisingly, union density is strongly correlated with the absence of
+so-called "right-to-work" anti-union laws, though there are exceptions (like
+Michigan and Nevada, which are both "right-to-work").
+
+{{< figure src="/images/union-density.png" class="w5in" >}}
 
 The 7.6 million unionized private-sector workers are represented by **15,047
 different local unions**---most affiliated with one of 132 "international"
-unions, but many others belonging to independent or unafilliated unions. 
+unions, but many others belonging to independent or unaffiliated unions. 
 
 Each circle below represents an international union, sized in proportion to
 the union's overall membership (in all sectors). Unions in blue are <span
@@ -73,9 +115,10 @@ class="dark highlight" style="background: #5fb0e6">affiliated with the
 AFL-CIO,</span> the umbrella organization for the labor movement. Unions in
 green are <span class="dark highlight" style="background: #73bc5e">affiliated
 with the Change to Win Federation</span> (CTW), which broke away from the
-AFL-CIO in 2005. Unions in yellow are <span class="highlight"
-style="background: #eebc3b">independent.</span> You can hover over each union
-to learn more, and click to highlight one.
+AFL-CIO in 2005 (some of the unions which broke away have since reaffiliated).
+Unions in yellow are <span class="highlight" style="background:
+#eebc3b">independent.</span> You can hover over each union to learn more, and
+click to highlight one.
 
 <div class="chart" id="intl-chart-a1"></div>
 
@@ -88,10 +131,10 @@ to learn more, and click to highlight one.
     represent workers in a diverse array of industries.
 </p>
 <p>
-    But even these large unions together represent only a minority of all 
-    unionized workers. Millions more belong to industry-specific small
-    international unions, like the 22,000-strong United Union of Roofers,
-    Waterproofers and Allied Workers (<b>RWAW</b>).
+    But even these large unions together represent barely half of all unionized
+    workers. Millions more belong to industry-specific small international
+    unions, like the 22,000-strong United Union of Roofers, Waterproofers and
+    Allied Workers (<b>RWAW</b>).
 </p>
 </div>
 
@@ -118,23 +161,25 @@ to learn more, and click to highlight one.
     billion</b> in net assets, mostly consisting of its large strike fund.
     Other wealthy unions, like the <b>USW</b>, <b>CJA</b>, and <b>IBEW</b>,
     consist mainly of workers in declining industries (like steel) or
-    industries that have significantly de-unionized (like construction).
+    industries that have become less unionized (like construction). Despite this,
+    larger unions have generally done better than small unions in the last
+    decade, tending to maintain rather than lose their membership.
 </p>
 </div>
 
 <div class="text" id="a1s50">
 <p>
-    For comparison, here's <b>Berkshire Hathaway</b>, the U.S. corporation
-    with the most net assets: $348.7 billion.
+    For comparison, here's <b>Walmart</b>, the largest private employer in the
+    U.S., with $79.6 billion in net assets.
 </p>
 <p>
-    That's <b>over forty times</b> the net assets of all the international
+    That's around <b>ten times</b> the net assets of all the international
     unions combined. In a single company.
 </p>
 <p>
     With corporations operating on this kind of scale, it's no surprise that
-    the UFCW (net assets of $336 million) has struggled to unionize Walmart
-    (net assets of $80 <i>billion</i>). 
+    the UFCW (net assets of $336 million) has struggled to unionize Walmart's
+    retail employees.
 </p>
 </div>
 
@@ -144,9 +189,9 @@ to learn more, and click to highlight one.
 </section>
 
 <!-- ------------------------------------------------------------- -->
-<!-- <div style="height: 25vh"></div> -->
+<div style="height: 4em"></div>
 
-# Savers and Spenders
+# Some unions are spenders, others are savers
 
 <section class="scroll-interactive" id="a2">
 
@@ -156,8 +201,9 @@ and how they choose to spend these resources.
 
 Below, unions are arranged from left to right in order of their per-member 
 net assets. This is a good measure of unions' wealth, as it accounts for 
-the size of the membership---we would expect larger unions to be able
-to collect more dues, and therefore to have more net assets.
+the size of the membership---all else being equal, we would expect larger
+unions to be able to collect more dues, and therefore to have more net assets. 
+Dividing by the number of members controls for this effect.
 
 <span id="a2s20"></span>
 The wealthiest union on a per-member basis is the <b>American Train Dispatchers
@@ -222,7 +268,7 @@ their extremely large size.
 </p>
 <p>
     It's important to note that local unions also spend in these categories,
-    and are not included in the figures below.
+    and are not included in the graphics below.
 </p>
 </div>
 
@@ -230,7 +276,7 @@ their extremely large size.
     Of the very large unions, the <b>SEIU</b> spends the largest portion of its
     budget on representation and organizing.  The <b>IUJAT</b>, the oldest
     union in continuous existence in the U.S., and the <b>AFA</b>, which has
-    been organizing agressively in major airlines, also top the chart for
+    been organizing aggressively in major airlines, also top the chart for
     representational spending.
 </div>
 
@@ -282,8 +328,8 @@ their extremely large size.
     But some of the unions which have grown most aggressively&mdash;like the
     SEIU&mdash; or which are widely recognized as democratic and
     innovative&mdash;like UNITE HERE, the AFA, or UE&mdash;are closer to the
-    middle. And many shrinking unions&mdash;like IBEW, CJA, or IUOE&mdash;are
-    stuck in the bottom-right corner.
+    middle. And many unions which have not seen membership growth&mdash;like
+    IBEW, CJA, or IUOE&mdash;are in the bottom-right corner.
 </p>
 </div>
 
@@ -302,7 +348,9 @@ their extremely large size.
 Money to organize and represent workers means little without the people who
 make unions work: officers, organizers and staff.
 
-Unions employ vastly different numbers of staff relative to their size.
+Unions employ vastly different numbers of staff relative to their size. The
+more staff a union employs---the lower its member-to-staff ratio---the better 
+it can generally represent its workers and organize new workplaces.
 Unsurprisingly, very large unions like the <b>NEA</b> have high member-to-staff
 ratios (4,164 workers per staff member), while small unions like the
 Inlandboatmen's Union (<b>IBU</b>) have very low ratios (25 workers per staff
@@ -345,13 +393,13 @@ before benefits.
     The <b>SEIU</b> is by far the most centralized union, with more than 18,000
     members in its average local. On the other end of the spectrum, craft
     unions like the Insulators (<b>HFIA</b>) or city-based unions like the East
-    coast Longshormen (<b>ILA</b>) have smaller locals.
+    coast Longshoremen (<b>ILA</b>) have smaller locals.
 </p>
 </div>
 
 </section>
 
-<div style="height: calc(15vh + 35vw)"></div>
+<div style="height: calc(25vh + 35vw)"></div>
 
 # Conclusion
 
@@ -359,14 +407,15 @@ American unions are as varied as the workers and professions they represent.
 They differ in their membership, their financial resources, their local union
 structure, their spending priorities, and their staffing levels.  Uniting them,
 however, is their shared mission to improve the lot of the average worker, and
-to give working people everywhere more of a say in how our society is run.
+to give people everywhere more of a say in how our society is run.
 
 And now labor has an opportunity. Half of nonunion workers---<b>67 million
 people</b>---[say they would join a union if they
 could](https://www.pbs.org/newshour/nation/a-growing-number-of-americans-want-to-join-a-union),
 a massive increase over previous years, and public support for unions is higher 
-than it has been in decades.  To make the most of this opportunity, unions will
-have to organize aggressively, democratize, and learn from one another.
+than it has been in almost fifty years.  To make the most of this opportunity,
+unions will have to organize aggressively, democratize, and learn from one
+another.
 
 Some of the differences between unions are justified. Others are accidents of 
 history.  But unions can set budgets and priorities, and can partner and merge.
@@ -375,7 +424,7 @@ other unions, will be necessary to ensuring that unions and workers can win in
 the decades ahead.
 
 
-<div style="height: 15em"></div>
+<div style="height: 12em"></div>
 
 _Data provided by the [Office of Labor-Management
 Standards](https://www.dol.gov/olms/), a division of the U.S. Department of

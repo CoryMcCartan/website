@@ -61,7 +61,7 @@ async function main() {
     window.a1_chart = a1_bubbleChart(a1_container);
 
     window.box_x = (x, w) => x - pageXOffset > innerWidth - 180 ? x - 192 : x + 16;
-    window.box_y = (y, h) => y - pageYOffset > innerHeight - 140 ? y - 120 : y - 16;
+    window.box_y = (y, h) => y - pageYOffset > innerHeight - 150 ? y - 130 : y - 16;
     d3.select(window).on("scroll", tooltip.hide);
 
     window.a2_chart = a2_bubbleChart(a2_container, d => d.eq_pc, 15,
@@ -107,7 +107,7 @@ async function main() {
             triggerElement: a1_container.node(),
             triggerHook: 1,
             offset: h,
-            duration: "650%",
+            duration: "666%",
         })
         .setPin(a1_container.node(), { pushFollowers: false }),
 
@@ -126,7 +126,7 @@ async function main() {
         })
         .on("enter", () => {
             a1_chart.data.push({
-                abbr: "UNAFF",
+                abbr: "Unaff.",
                 radius: a1_chart.scales.radius(760681), 
                 color: "#d11", cx: w/2, cy: h/2, 
             });
@@ -134,7 +134,7 @@ async function main() {
         })
         .on("leave", () => {
             let unaff_idx;
-            if ((unaff_idx = a1_chart.data.findIndex(d => d.abbr == "UNAFF")) >= 0)
+            if ((unaff_idx = a1_chart.data.findIndex(d => d.abbr == "Unaff.")) >= 0)
                 a1_chart.data.splice(unaff_idx, 1);
             a1_chart.add(a1_chart.data, 0.25);
         }),
@@ -181,17 +181,17 @@ async function main() {
         })
         .on("enter", () => {
             a1_chart.data.push({
-                abbr: "BRK",
-                radius: a1_chart.scales.radius(348.7e9), 
+                abbr: "Walmart",
+                radius: a1_chart.scales.radius(79.634e9), 
                 color: "#666", cx: w/2, cy: h/2, 
             });
             a1_chart.add(a1_chart.data, 0.05);
             a1_chart.highlight(["UFCW"], true);
             a1_container.selectAll("g.intl text")
-                .filter(d => d.abbr=="BRK")
-                .attr("y", d => d.radius*0.6)
+                .filter(d => d.abbr=="Walmart")
+                .attr("y", d => d.radius*0.3)
                 .attr("x", d => d.radius*0.3)
-                .attr("font-size", d => d.radius/4.5)
+                .attr("font-size", d => d.radius/5)
         })
         .on("leave", () => {
             a1_chart.data.pop();
@@ -470,16 +470,19 @@ function a1_bubbleChart(container, radius="members", r_scale=10, r_div=11) {
         .force("x", d3.forceX().x(d => d.cx).strength(0.12))
         .force("y", d3.forceY().y(d => d.cy).strength(0.16))
         .force("collision", d3.forceCollide().radius(d => d.radius+1))
-        .alpha(0.2)
+        .alpha(0.3)
         .alphaDecay(1 - Math.pow(0.001, 1 / 600)) 
         .on("tick", tick);
 
     //----------------TOOLTIP----------------------------------
     let f_members = d3.format(",.4r");
     let f_assets = d3.format("$,.3s");
+    let f_pct = d3.format(".0%");
     let boxText = function(d) {
         return `<b>${d.radius > 10 ? "" : d.abbr + ": "}${d.union_name}</b><br />` +
             `${d.members < 1000 ? d.members : f_members(d.members)} members<br />` +
+            (!!d.member_chg ? `(${f_pct(Math.abs(d.member_chg))} ` + 
+                 `${d.member_chg < 0 ? "decrease" : "increase"} 2008-18)<br /> ` : "") +
             `${d.locals} private or federal locals<br />` +
             `Net assets: ${f_assets(d.net_assets).replace("G", "B")}<br />` +
             `Revenues:  ${f_assets(d.receipts).replace("G", "B")}<br />` +
@@ -514,8 +517,8 @@ function a1_bubbleChart(container, radius="members", r_scale=10, r_div=11) {
             .attr("font-size", d => 3*d.radius / (d.abbr.length+2));
 
         sim.force("collision", d3.forceCollide().radius(d => d.radius+1))
-            .alpha(0.4)
-            .alphaDecay(1 - Math.pow(0.001, 1 / 225)) 
+            .alpha(0.5)
+            .alphaDecay(1 - Math.pow(0.001, 1 / 150)) 
             .restart();
     };
 
@@ -542,11 +545,11 @@ function a2_bubbleChart(container, stat, stat_min=1, stat_label="",
         radius: d3.scalePow()
             .exponent(0.5)
             .domain([0, d3.max(intls
-                               .filter(d => stat(d) > stat_min)
+                               .filter(d => stat(d) > stat_min && isFinite(stat(d)))
                                .map(d => d.members))])
             .range([w < 400 ? 1 : 3, 8 + w/16])
     };
-    let max = d3.max(intls.filter(d => d.members > 500 && !!stat(d))
+    let max = d3.max(intls.filter(d => d.members > 500 && !!stat(d) && isFinite(stat(d)))
                           .map(stat));
     let buf_radius = scales.radius(intls.filter(d => stat(d) == max)[0].members);
     max *= (w - 2*buffer + buf_radius) / (w - 2*buffer);
@@ -642,7 +645,7 @@ function a2_bubbleChart(container, stat, stat_min=1, stat_label="",
     let sim = d3.forceSimulation(data)
         .force("charge", d3.forceManyBody().strength(0.3))
         //.force("center", d3.forceCenter(w, h/2))
-        .force("x", d3.forceX().x(d => d.cx).strength(3.0))
+        .force("x", d3.forceX().x(d => d.cx).strength(4.0))
         .force("y", d3.forceY().y(d => d.cy).strength(0.1))
         .force("collision", d3.forceCollide().radius(d => d.radius+1))
         .alpha(0.5)
@@ -654,13 +657,15 @@ function a2_bubbleChart(container, stat, stat_min=1, stat_label="",
     let f_number = d3.format(",.3r");
     let f_stat = d3.format(fmt);
     let f_assets = d3.format("$,.3s");
+    let f_pct = d3.format(".0%");
     let boxText = function(d) {
         return `<b>${d.radius > 10 ? "" : d.abbr + ": "}${d.union_name}</b><br />` +
             `${stat_label}: <span style="text-decoration: underline">` +
             `${f_stat(stat(d))}</span><br />` +
             `${d.members < 1000 ? d.members : f_number(d.members)} members<br />` +
+            (!!d.member_chg ? `(${f_pct(Math.abs(d.member_chg))} ` + 
+                 `${d.member_chg < 0 ? "decrease" : "increase"} 2008-18)<br /> ` : "") +
             `Net assets: ${f_assets(d.net_assets).replace("G", "B")}<br />` +
-            `Revenues:  ${f_assets(d.receipts).replace("G", "B")}<br />` +
             `Spending:  ${f_assets(d.disbursements).replace("G", "B")}<br />` +
             `${d.officers} officers and ${d.staff} staff`;
     };
@@ -683,7 +688,7 @@ function a2_bubbleChart(container, stat, stat_min=1, stat_label="",
         fmt = new_fmt;
         f_stat = d3.format(fmt);
 
-        let max = d3.max(intls.filter(d => d.members > 500 && !!stat(d))
+        let max = d3.max(intls.filter(d => d.members > 500 && !!stat(d) && isFinite(stat(d)))
                               .map(stat));
         let buf_radius = scales.radius(intls.filter(d => stat(d) == max)[0].members);
         max *= (log ? 1.4 : 1) * (w - 2*buffer + buf_radius) / (w - 2*buffer);
@@ -718,9 +723,9 @@ function a2_bubbleChart(container, stat, stat_min=1, stat_label="",
 
         add(newdata);
 
-        sim.force("x", d3.forceX().x(d => d.cx).strength(2.0))
+        sim.force("x", d3.forceX().x(d => d.cx).strength(4.0))
             .force("collision", d3.forceCollide().radius(d => d.radius+1))
-            .alpha(0.05)
+            .alpha(0.08)
             .alphaDecay(1 - Math.pow(0.001, 1 / 150)) 
             .restart();
     };
@@ -759,10 +764,17 @@ function a3_triangleChart(container) {
         .domain([0, 1])
         .range([buffer_y*0.5 + sq22*l, buffer_y*0.5]);
 
+    let scale_col = d3.scaleDivergingSqrt()
+        .interpolator(d3.interpolateRgbBasis(["#d72", "#dde0dd", "#78f"]))
+        .domain([-0.55, -0.05, 0.45])
+        //.range(["#d11", "#ddd", "#45f"])
+        .clamp(true);
+
     let data = intls.map(d => {
             d = {...d};
             d.radius = Math.max(1, scale_r(d.members));
             d.color= colors[d.affl];
+            //d.color= scale_col(d.member_chg);
             d.p_r = (d.represent + d.strike_benefits) / d.disbursements;
             d.p_g = (d.grants + d.benefits) / d.disbursements;
             d.p_o = 1 - d.p_r - d.p_g;
@@ -809,20 +821,20 @@ function a3_triangleChart(container) {
         .text("Other");
         
 
-    let nodes = svg.selectAll("g.intl")
+    let nodes = svg.selectAll("g.tri")
         .data(data);
     let groups = nodes.enter().append("g")
-        .attr("class", "intl")
+        .attr("class", "tri")
         .attr("transform", d => `translate(${d.x}, ${d.y})`);
     groups.append("circle");
     groups.append("text");
     nodes = groups.merge(nodes);
 
-    let bubbles = svg.selectAll("g.intl circle")
+    let bubbles = svg.selectAll("g.tri circle")
         .attr("fill", d => selected.includes(d.abbr) ? colors.sel : d.color)
         .attr("r", d => d.radius);
 
-    let labels = svg.selectAll("g.intl text")
+    let labels = svg.selectAll("g.tri text")
         .attr("text-anchor", "middle")
         .attr("alignment-baseline", "middle") 
         .attr("font-size", d => 2.9*d.radius / (d.abbr.length+1))
@@ -853,6 +865,8 @@ function a3_triangleChart(container) {
     let boxText = function(d) {
         return `<b>${d.radius > 10 ? "" : d.abbr + ": "}${d.union_name}</b><br />` +
             `${d.members < 1000 ? d.members : f_number(d.members)} members<br />` +
+            (!!d.member_chg ? `(${f_pct(Math.abs(d.member_chg))} ` + 
+                 `${d.member_chg < 0 ? "decrease" : "increase"} 2008-18)<br /> ` : "") +
             `Net assets: ${f_assets(d.net_assets).replace("G", "B")}<br />` +
             `Spending:  ${f_assets(d.disbursements).replace("G", "B")}<br />` +
             `Pct. representational: <u>${f_pct(d.p_r)}</u><br />` +

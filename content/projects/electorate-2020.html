@@ -3,6 +3,7 @@ title: The American Electorate
 description: Much more diverse than you think
 date: 2020-01-21
 publishdate: 2020-01-01
+draft: true
 slug: electorate-2020
 js: [
     "https://d3js.org/d3.v5.min.js", 
@@ -11,8 +12,9 @@ js: [
 css: ["/css/weepeople.css", "/css/electorate.css"]
 ---
 
+<!-- PCA: 47% of var in qs explained by left-right spectrum -->
 
-<div id="profile" style="visibility: hidden">
+<div id="profile">
 </div>
 
 <script id="template" type="text/html">
@@ -24,7 +26,7 @@ let pppro = ["his", "hers"][d.gender-1];
 }}
 <div id="header">
     <div id="cutout" class="weepeople">{{=d.cutout}}</div>
-    <h1 id="name">&ldquo;{{=d.fname}} {{=d.lname}}&rdquo;</h1>
+    <h1 id="name">&ldquo;{{=d.fname}} {{=d.lname.replace("'", "&rsquo;")}}&rdquo;</h1>
     <div class="buttons">
         <button id="prev-profile" class="move">&#9664;</button>
         <button id="next-profile" class="move">&#9654;</button>
@@ -46,7 +48,7 @@ let pppro = ["his", "hers"][d.gender-1];
         &nbsp;&bullet;&nbsp;
         {{= ["Did not finish high school", "High school graduate", 
              "Some college", "2-year college degree",
-             "Bachelor's degree", "Postgraduate degree"][d.educ-1] }}
+             "Bachelor&rsquo;s degree", "Postgraduate degree"][d.educ-1] }}
         &nbsp;&bullet;&nbsp;
         Makes {{= ["less than $10k", "around $15k", "around $25k", 
         "around $35k", "around $45k", "around $55k", "around $65k",
@@ -58,23 +60,42 @@ let pppro = ["his", "hers"][d.gender-1];
         {{? d.ideo5 != 6 }}
         Politically {{=["very liberal", "liberal", "moderate", 
         "conservative", "very conservative"][d.ideo5-1]}}
-        &nbsp;&bullet;&nbsp;
+        {{?? true }}
+        Unsure of {{=ppro}} political views
         {{?}}
+        &nbsp;&bullet;&nbsp;
+        {{? !!d.pid3 }}
         {{= ['<span style="color: #47e">Democrat</span>', 
         '<span style="color: #d43">Republican</span>', 
         "Independent", "Another political party", 
         "Not sure what party " + spro + " belongs to"][d.pid3-1] }}
+        {{?? true }}
+        Not sure what party {{=spro}} belongs to
+        {{?}}
         &nbsp;&bullet;&nbsp;
-        {{? d.q317 == 1 || d.q317 == 2 }}
+        {{? d.q316 == 1 && d.q317 < 4 }}
         Voted for {{= ['<span style="color: #d43">Trump</span>', 
-        '<span style="color: #47e">Clinton</span>'][d.q317-1] }} in 2016
+        '<span style="color: #47e">Clinton</span>', 
+        'a third party candidate'][d.q317-1] }} in 2016
         {{?? true }}
         Did not vote in 2016
         {{?}}
     </div>
 </div>
 
-Agrees with __ of Democratic positions.
+<p>
+Overall, {{=d.fname}} agrees with <b>{{= f_pct(d.dem_agree) }}</b> of 
+Democratic and <b>{{= f_pct(d.gop_agree) }}</b> of Republican positions.
+</p>
+
+<a href="#economic-issues" class="leadin">Economic issues</a>
+<div class="gradient" id="econ-bar">
+    <div class="bar", style="margin-left: {{= f_pct(0.5*(1+d.econ)) }};"></div>
+</div>
+<a href="#social-issues" class="leadin">Social issues</a>
+<div class="gradient" id="social-bar">
+    <div class="bar", style="margin-left: {{= f_pct(0.5*(1+d.social)) }};"></div>
+</div>
 
 <h2>Personal details</h2>
 <p>
@@ -85,7 +106,7 @@ Agrees with __ of Democratic positions.
 "and " + ppro + " extended family were all born in the U.S"][d.immstat-1] }}. 
 {{=cap(spro)}} {{= ["is married", "is separated from " + ppro + " spouse",
 "is divorced", "is widowed", "has never been married", 
-"is living in a civil partnership"][d.marstat-1] }} and has 
+"is living in a domestic partnership"][d.marstat-1] }} and has 
 {{= d.children == 0 ? "no" : d.children }} 
 {{= d.children == 1 ? "child" : "children" }}. 
 {{? d.ownhome != 3 }}
@@ -130,7 +151,7 @@ a year, {{= ["a large increase from", "a moderate increase from",
 
 <p>
 Religion is {{= ["very", "somewhat", "not too", "not at all"][d.pew_religimp-1] }} 
-important to {{= d.fname }}. {{=cap(spro)}} is {{? d.pew_bornagain == 1 }}
+important to {{= d.fname }}. {{=cap(spro)}} is {{? d.pew_bornagain == 2 }}
 {{= ["Protestant", "Catholic",
 "Mormon", "Greek Orthodox", "Jewish", "Muslim", "Buddhist", "Hindu", "atheist",
 "agnostic", "not a part of any particular church", 
@@ -175,11 +196,13 @@ Last year, {{=d.fname}}
 {{?}}
 {{~}}
 </p>
+{{?? true}}
+<br />
 {{?}}
 
 
 
-<h2>Satisfaction and involvement with government</h2>
+<h2 id="economic-issues">Satisfaction and engagement with government and politics</h2>
 <p>
 {{=d.fname}} {{= ["usually follows", "sometimes follows", 
 "occasionally follows", "doesn&rsquo;t really follow"][d.newsint-1] }} the news 
@@ -199,30 +222,9 @@ doesn&rsquo;t know which party controls the House or the Senate.
 </p>
 
 <p>
-{{ let approval = ["strongly approves", "somewhat approves", 
-"somewhat disapproves", "strongly disapproves", 
-"isn't sure what " + spro + " thinks"]; }}
-{{=cap(spro)}} {{= approval[d.q308a-1] }} of President Trump, 
-{{= approval[d.q308b-1] }} of Congress{{? !!d.q311a }} 
-(and {{= approval[d.q311a-1] }} of his representative)
-{{?}}, 
-{{= approval[d.q308c-1] }} of the Supreme Court, and 
-{{= approval[d.q308d-1] }} of {{=ppro}} governor.
-</p>
-
-<p>
-{{ let grades = ["excellent", "above average", "mediocre", "below average", "bad"]; }}
-In {{=ppro}} local community, {{=d.fname}} thinks 
-the schools are {{= grades[d.q427_a-1] }}, 
-the police are {{= grades[d.q427_b-1] }}, and 
-the roads are {{= grades[d.q427_c-1] }}.
-</p>
-
-<h2>Voting and political engagement</h2>
-<p>
 In 2016, {{=d.fname}} {{? d.q316 == 1 }}
 {{= ["voted for Donald Trump", "voted for Hillary Clinton",
-"voted for someone else", "voted, but not for president", 
+"voted for a third-party candidate", "voted, but not for president", 
 "voted, but forgot who " + spro + " voted for"][d.q317-1] }}.
 {{?? true }}
 did not vote.
@@ -236,6 +238,28 @@ In the 2018 midterms, {{=spro}} {{? !!d.q401 }}
 {{?? true }}
 did not vote.
 {{?}} 
+</p>
+
+<p>
+{{ let approval = ["strongly approves", "somewhat approves", 
+"somewhat disapproves", "strongly disapproves", 
+"isn't sure what " + spro + " thinks"]; }}
+{{=cap(spro)}} {{= approval[d.q308a-1] }} of President Trump, 
+{{= approval[d.q308b-1] }} of Congress{{? !!d.q311a }} 
+(and {{= approval[d.q311a-1] }} of his representative)
+{{?}}, 
+{{= approval[d.q308c-1] }} of the Supreme Court, and 
+{{= approval[d.q308d-1] }} of {{=ppro}} governor. 
+{{=cap(spro)}} {{= ["thinks", "does not think", "isn't sure if"][d.q335-1] }} 
+Trump colluded with Russian operatives to influence the 2016 election.
+</p>
+
+<p>
+{{ let grades = ["excellent", "above average", "mediocre", "below average", "bad"]; }}
+In {{=ppro}} local community, {{=d.fname}} thinks 
+the schools are {{= grades[d.q427_a-1] }}, 
+the police are {{= grades[d.q427_b-1] }}, and 
+the roads are {{= grades[d.q427_c-1] }}.
 </p>
 
 {{ let particip = [d.q417a_1 == 1, d.q417a_2 == 1, d.q417a_3 == 1, 
@@ -267,43 +291,399 @@ Last year, {{=d.fname}}
 {{?}}
 {{~}}
 </p>
+{{?? true}}
+<br />
 {{?}}
 
 <!-- ECONOMIC ================================================ -->
 <h2>Economic issues</h2>
 
-<h4>Taxes</h4>
-<h4>Health care</h4>
-<h4>Trade</h4>
-<h4>Climate</h4>
-<h4>Budget</h4>
-<h4>Regulation</h4>
-- financial CHOICE
-- 2 for 1
+<h3>Health care</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q327a">
+    <td>Provide Medicare for all Americans</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q327c">
+    <td>Repeal the entire Affordable Care Act</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q327d">
+    <td>Repeal only the part of the Affordable Care Act that requires that most
+    individuals have health insurance and that larger employers cover their
+    employees</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q327e">
+    <td>Partially repeal the Affordable Care Act. This would (1) repeal
+    individual and employer mandates, (2) cut Medicaid payments by 25 percent,
+    and (3) reduce taxes on expensive health plans, known as Cadillac health
+    plans</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
 
+<h3>Climate and environment</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q332c">
+    <td>Withdraw the United States from the Paris Climate Agreement</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q332b">
+    <td>Allow the construction of the Keystone XL pipeline</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q415a">
+    <td>Give the Environmental Protection Agency power to regulate Carbon
+    Dioxide emissions</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q415b">
+    <td>Lower the required fuel efficiency for the average automobile from 35
+    mpg to 25 mpg</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q415c">
+    <td>Require that each state use a minimum amount of renewable fuels (wind,
+    solar, and hydroelectric) in the generation of electricity even if
+    electricity prices increase</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q415d">
+    <td>Strengthen the Environmental Protection Agency enforcement of the Clean
+    Air Act and Clean Water Act even if it costs US jobs</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q417_a">
+    <td>Repeal the Clean Power Plant Rules, which calls for power plants to cut
+    greenhouse gas emissions by 32 percent by 2030</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Trade</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q332e">
+    <td>Withdraw the United States from the Trans-Pacific Partnership trade
+    agreement, a free trade agreement that included the U.S., Japan, Australia,
+    Vietnam, Canada, Chile, others</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q331a">
+    <td>$50 billion worth of tariffs on goods imported from China</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q331b">
+    <td>25% tariffs on imported steel and 10% on imported aluminum,
+    <i>except</i> from Canada, Europe and Mexico</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q331c">
+    <td>25% tariffs on imported steel and 10% on imported aluminum,
+    <i>including</i> from Canada, Europe and Mexico</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Taxes</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q326">
+    <td>The 2017 tax bill</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q325a">
+    <td>Cut the Corporate Income Tax rate from 39 percent to 21 percent</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q325b">
+    <td>Reduce the mortgage interest deduction. Allow people to deduct the
+    interest on no more than $500,000 of mortgage debt. The previous limit was
+    $1 million</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q325c">
+    <td>Limit the amount of state and local taxes that can be deducted to
+    $10,000 (previously there was no limit)</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q325d">
+    <td>Increase the standard deduction on federal income taxes from $12,000 to
+    to $25,000</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q325e_new">
+    <td>Reduce the income tax rate for households earning less than $500,000 by 3%</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q325f_new">
+    <td>Reduce the income tax rate for households earning more than $500,000 by
+    3 percent (from 40% to 37%)</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q414B">
+    <td>Increase taxes on incomes that exceed $1 million by 4 percent to pay
+    for schools and roads</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q414C">
+    <td>Increase the sales tax by one percent to pay for schools and roads</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q414D">
+    <td>Eliminate and prohibit all income taxes in your state</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Budget</h3>
+The federal budget contains about $600 billion for national defense and $550 
+billion for domestic discretionary spending such as education and 
+transportation, and $2 trillion for nondiscretionary spending on entitlement 
+programs like Medicare, Medicaid, and Social Security. Considered on their 
+own, would you support or oppose each of the following budget proposals?
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q324a">
+    <td><b>Increase</b> defense spending by $60 billion,
+    <b>cut</b> discretionary nondefense spending by $60 billion, and 
+    <b>cut</b> Medicaid, Food Stamps, and other entitlements by $150 billion</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q324b">
+    <td><b>Increase</b> defense spending by $60 billion,
+    <b>increase</b> discretionary nondefense spending by $60 billion, and 
+    <b>leave</b> Medicaid, Food Stamps, and other entitlements unchanged</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q324c">
+    <td><b>Cut</b> defense spending by $60 billion,
+    <b>increase</b> discretionary nondefense spending by $60 billion, and 
+    <b>increase</b> Medicaid, Food Stamps, and other entitlements by $150 billion</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q324d">
+    <td><b>Leave</b> defense spending unchanged,
+    <b>leave</b> discretionary nondefense spending unchanged, and 
+    <b>leave</b> Medicaid, Food Stamps, and other entitlements unchanged</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Regulation</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q416">
+    <td>The Financial CHOICE Act, which repeals government authority under the 
+    Dodd-Frank Act to step in if a bank is near collapse, gives the President 
+    the power to fire the directors of the Federal Housing Finance Agency and 
+    the Consumer Financial Protection Bureau, and reduces restrictions on the 
+    amount of risk that smaller banks can take in lending</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q417_e">
+    <td>Require that with each new regulation enacted, two must be cut. Any
+    new costs created by new regulations must be matched with eliminations</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3 id="social-issues">Foreign policy</h3>
+This section is not included in the calculation of an economic issues score.
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q417_b">
+    <td>Withdraw US from the Iran Nuclear Accord and reimpose sanctions on Iran</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q328e">
+    <td>Impose sanctions on countries and firms doing business with North
+    Korea. Increase President’s authority to impose sanctions if North Korea
+    violates U.N. Security Council resolutions regarding that country</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q328d">
+    <td>Require that the President get approval from Congress to ease any
+    existing sanctions on Russia</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q332a">
+    <td>Recognize Jerusalem as the capital of Israel and move the U.S. embassy
+    from Tel Aviv to Jerusalem</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<div style="height: 2em;"></div>
 <!-- SOCIAL ================================================ -->
 <h2>Social issues</h2>
 
-<h4>Views on race and gender</h4>
-- resentment
-<h4>Gun control</h4>
-<h4>Abortion</h4>
-<h4>Immigration</h4>
-<h4>Other</h4>
-- transgender military
+<h3>Views on race and gender</h3>
+<p>
+{{? !(d.q422e > 2) }}
+{{=d.fname}} {{= d.q422e == 1 ? "strongly" : "" }} believes that 
+Irish, Italians, Jewish and many other minorities overcame prejudice and worked 
+their way up, and blacks should do the same without any special favors. 
+{{?}}
+{{? !(d.q422f > 2) }}
+{{=d.fname}} {{= d.q422f == 1 ? "strongly" : "" }} believes that 
+generations of slavery and discrimination have created conditions that make it 
+difficult for blacks to work their way out of the lower class. 
+{{?}}
+{{? !(d.q422g > 2) }}
+{{=d.fname}} {{= d.q422g == 1 ? "strongly" : "" }} believes that 
+over the past few years, blacks have gotten less than they deserve. 
+{{?}}
+{{? !(d.q422h > 2) }}
+{{=d.fname}} {{= d.q422h == 1 ? "strongly" : "" }} believes that 
+it’s really a matter of some people not trying hard enough&mdash;if blacks 
+would only try harder they could be just as well off as whites. 
+{{?}}
+{{? !(d.q422a > 2) }}
+{{=d.fname}} {{= d.q422a == 1 ? "strongly" : "" }} believes that 
+white people in the U.S. have certain advantages because of the color of their skin. 
+{{?}}
+{{? !(d.q422b > 2) }}
+{{=d.fname}} {{= d.q422b == 1 ? "strongly" : "" }} believes that 
+racial problems in the U.S. are rare, isolated situations. 
+{{?}}
+</p>
 
-<!-- OTHER ================================================ -->
-<h2>Governance and foreign policy issues</h2>
+<p>
+{{? !(d.q422c > 2) }}
+{{=d.fname}} {{= d.q422c == 1 ? "strongly" : "" }} believes that 
+when women lose to men in a fair competition, they typically complain about 
+being discriminated against. 
+{{?}}
+{{? !(d.q422d > 2) }}
+{{=d.fname}} {{= d.q422d == 1 ? "strongly" : "" }} believes that 
+feminists are making entirely reasonable demands of men. 
+{{?}}
+</p>
 
-<h4>Supreme Court</h4>
-<h4>Foreign policy</h4>
- -nuclear deal
- -sanctions
+<br />
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q417_d">
+    <td>Ban Transgender People in the Military</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Gun control</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q320a">
+    <td>Background checks for all sales, including at gun shows and over the Internet</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q320c">
+    <td>Ban assault rifles</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q320d">
+    <td>Make it easier for people to obtain a concealed-carry gun permit</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Abortion</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q321a">
+    <td>Always allow a woman to obtain an abortion as a matter of choice</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q321b">
+    <td>Permit abortion only in case of rape, incest or when the woman’s life 
+    is in danger</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q321c">
+    <td>Ban abortions after the 20th week of pregnancy</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q321d">
+    <td>Allow employers to decline coverage of abortions in insurance plans</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q321e">
+    <td>Prohibit the expenditure of funds authorized or appropriated by federal 
+    law for any abortion</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q321f">
+    <td>Make abortions illegal in all circumstances</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Immigration</h3>
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q322a">
+    <td>Increase spending on border security by $25 billion, including building 
+    a wall between the U.S. and Mexico</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q322b">
+    <td>Provide legal status to children of immigrants who are already in the 
+    United States and were brought to the United States by their parents. 
+    Provide these children the option of citizenship in 10 years if they meet 
+    citizenship requirements and commit no crimes (DACA)</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q322c_new">
+    <td>Reduce legal immigration by eliminating the visa lottery and ending 
+    family-based migration</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q322d_new">
+    <td>Grant legal status to DACA children, spend $25 billion to build the 
+    border wall, and reduce legal immigration by eliminating the visa lottery 
+    and ending family-based migration</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q322c">
+    <td>Withhold federal funds from any local police department that does not 
+    report to the federal government anyone they identify as an illegal 
+    immigrant</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q322f">
+    <td>Send to prison any person who has been deported from the United States 
+    and reenters the United States</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+<h3>Supreme Court</h3>
+This section is not included in the calculation of a social issues score.
+<table class="issues">
+<tr><th>Issue</th><th>Support</th><th>Oppose</th></tr>
+<tr id="q328b">
+    <td>Appoint Neil Gorsuch to the Supreme Court of the United State</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+<tr id="q328f">
+    <td>Appoint Brett Kavanaugh to the Supreme Court of the United States</td>
+    <td id="support"></td><td id="oppose"></td>
+</tr>
+</table>
+
+
 </script>
 
 <div style="height: 10em"></div>
 
-<em>Data from the <a href="https://cces.gov.harvard.edu/">
-        Cooperative Congressional Election Study</a>.</em>
+<em>
+Data from the <a href="https://cces.gov.harvard.edu/">
+    Cooperative Congressional Election Study</a>.
+Person sillhouettes from ProPublica&rsquo;s 
+<a href="https://github.com/propublica/weepeople">WeePeople</a>.
+</em>
 
 <script src="/js/electorate-2020.js"></script>

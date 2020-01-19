@@ -2,13 +2,13 @@
     {{ with .Params.hidetitle }}
     {{ else }}
     <h1 class="title">
-        <div class="text">{{- .Title -}}</div>
+        <div class="text">{{- .Title | markdownify -}}</div>
         <div class="triangle"></div>
         <div class="spacer"></div>
     </h1>
     {{ with .Description }}
     <h2 class="subtitle">
-        {{- . -}}
+        {{- . | markdownify -}}
     </h2>
     {{ end }}
     <section class="publishinfo">

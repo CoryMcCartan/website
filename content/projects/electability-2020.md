@@ -1,7 +1,7 @@
 ---
 title: Which Democratic candidates are most electable?
 description: >
-    Using demographic information in head-to-head polls to evaluate candidates'
+    Using demographic information in head-to-head polls to evaluate candidates’
     strengths in the electoral college.
 date: 2019-10-23
 slug: electability-2020

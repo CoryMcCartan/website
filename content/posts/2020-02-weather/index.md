@@ -19,6 +19,8 @@ js: [
     ]
 ---
 
+{{< figure src="san_francisco.jpg" class="w100" caption="San Francisco in fog, July 2019." >}}
+
 <span class="leadin">On September 5, 1997,</span> Los Angeles 
 [set a city record](https://www.nytimes.com/1997/09/05/us/los-angeles-sets-record-for-rainless-days.html)
 for the most consecutive days without any rain: 198. Just last month, Seattle

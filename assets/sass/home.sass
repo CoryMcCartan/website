@@ -47,10 +47,14 @@ header
         flex-shrink: 1
         margin-right: 0
         width: 0.3*$content-width
+        flex-direction: column
+        flex-wrap: nowrap
 
         .project
             margin-right: 1em
             max-width: $content-width
+            width: unset
+            flex-grow: 0
 
 .links div
     column-count: 2

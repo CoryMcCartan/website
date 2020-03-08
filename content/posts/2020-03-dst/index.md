@@ -36,7 +36,7 @@ the latest sunset in June. (Alaska and Hawaii aren't shown, as their sunset and
 sunrise times can be very different from those in the lower forty-eight. There's 
 also some strange artifacts in the Arizona data.)
 
-<figure style="flex-direction: row; flex-wrap: wrap">
+<figure style="flex-direction: row; flex-wrap: wrap; align-items: flex-start;">
 <img src="min_sunset.png" style="width: 4.5in">
 <img src="max_sunset.png" style="width: 4.5in">
 </figure>
@@ -45,7 +45,7 @@ also some strange artifacts in the Arizona data.)
 The picture is broadly similar for sunrises. The latest December sunrises are in 
 western North Dakota and the western part of the Upper Peninsula; the earliest
 June sunrises are in West Texas.
-<figure style="flex-direction: row; flex-wrap: wrap">
+<figure style="flex-direction: row; flex-wrap: wrap; align-items: flex-start;">
 <img src="max_sunrise.png" style="width: 4.5in">
 <img src="min_sunrise.png" style="width: 4.5in">
 </figure>
@@ -69,7 +69,7 @@ that sunrises are much more consistent than sunsets. The only exception, of
 course, is Arizona, which doesn't observe daylight savings. There, sunrise
 and sunset vary by the same amount.
 
-<figure style="flex-direction: row; flex-wrap: wrap">
+<figure style="flex-direction: row; flex-wrap: wrap; align-items: flex-start;">
 <img src="diff_sunrise.png" style="width: 4.5in">
 <img src="diff_sunset.png" style="width: 4.5in">
 </figure>
@@ -87,7 +87,7 @@ But if we were to switch to year-round DST (right map below), large chunks of
 the country would be guaranteed reasonable daylight, and the siutation would
 improve everywhere except northwest North Dakota. Thankfully, no one lives there.
 
-<figure style="flex-direction: row; flex-wrap: wrap">
+<figure style="flex-direction: row; flex-wrap: wrap; align-items: flex-start;">
 <img src="reasonable.png" style="width: 4.5in">
 <img src="reasonable_dst.png" style="width: 4.5in">
 </figure>

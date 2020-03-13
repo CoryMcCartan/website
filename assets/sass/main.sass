@@ -242,14 +242,14 @@ main
         background-color: $fg
         min-width: 0.5em
         width: 0.5em
-        left: 0.5em
+        left: calc(0.5em - 0.5px)
         position: relative
         clip-path: polygon(0% 99%, 1px 99%, 99% 0%, 0% 0%)
         -webkit-clip-path: polygon(0% 99%, 1px 99%, 99% 0%, 0% 0%)
 
     .spacer
         background-color: $bg
-        border-left: 1px solid $fg
+        //border: 1px solid $fg
 
 .subtitle
     margin: 0.5rem 0 1rem
@@ -265,6 +265,12 @@ main
 
 article p
     text-align: justify
+
+article .details
+    font-family: "Courier", "Menlo", "Andale Mono", monospace
+    font-size: 0.9em
+    color: $dark-gray
+
 
 // LISTS
 .post-list .post
@@ -349,19 +355,23 @@ footer
         p
             line-height: 1.1
 
+    article .details p
+        text-align: left
+
 @media screen and (max-width: $content-width)
     .title > .triangle 
         display: block
         background-color: $bg
         min-width: 0.5em
         width: 0.5em
-        left: 0
+        left: 0.5px
+        //margin-left: -0.5px
         position: relative
         clip-path: polygon(0% 100%, 100% 0%, 100% 100%)
         -webkit-clip-path: polygon(0% 100%, 100% 0%, 100% 100%)
 
     .title > .spacer
-        border-left: 1px solid $bg
+        border: 1px solid $bg
 
 
 @keyframes title 

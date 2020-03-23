@@ -50,15 +50,19 @@ What does this mean for you, personally? Fill out the boxes below.
 
 <section class="interactive">
 
+<div class="slider-box">
 <b style="font-size: 1.3rem;">Infection rate</b>&nbsp;&nbsp;
-<input id="inf_rate" type="range" min=0 max=100 value=50 step=5 />
-<label id="l_ir" for="inf_rate"></label><br />
+<input id="inf_rate" type="range" min=1 max=100 value=50 step=1 />
+<label id="l_ir" for="inf_rate"></label>
+</div>
 How many will be infected with the virus. Current estimates are 30&ndash;80%.
 The numbers below assume that around half of those infected will not show symptoms.
 
-<b style="font-size: 1.3rem;">Overall fatality rate</b>&nbsp;&nbsp;
-<input id="scfr" type="range" min=0.1 max=3 value=1.4 step=0.05 />
-<label id="l_scfr" for="scfr"></label><br />
+<div class="slider-box">
+<b style="font-size: 1.3rem;">Fatality rate</b>&nbsp;&nbsp;
+<input id="scfr" type="range" min=0.1 max=3 value=1.4 step=0.1 />
+<label id="l_scfr" for="scfr"></label>
+</div>
 What fraction of those who show symptoms will die. 
 Current estimates are 0.9&ndash;2.1%.
 
@@ -152,6 +156,12 @@ guidelines.
     flex-basis: 360px;
 }
 
+.slider-box {
+    display: flex;
+    align-items: baseline;
+    max-width: 480px;
+}
+
 .estimate {
     background: #eea0aa;
     padding: 0.75em;
@@ -176,6 +186,9 @@ label {
     font-size: 1.7rem;
     color: #666;
     font-weight: bold;
+    margin-left: 4px;
+    width: 2.8em;
+    text-align: right;
 }
 
 input[type=number] {
@@ -195,7 +208,7 @@ input[type=range] {
     height: 4px;
     margin: auto;
     position: relative;
-    top: -3px;
+    top: 3px;
     border-radius: 2px;
     background: #aaaaaa;
 }

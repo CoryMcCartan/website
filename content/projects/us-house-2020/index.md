@@ -3,11 +3,25 @@ title: 2020 House Forecast
 description: Will Democrats maintain their majority?
 date: 2020-03-11
 slug: us-house-20
+featured: true
 images:
     - /election-2020/capitol.jpg
 js: ["https://d3js.org/d3.v5.min.js"]
-css: ["/projects/us-house-20/graphics.css"]
+css: [
+    "/projects/us-house-20/graphics.css",
+    "/election-2020/shared.css",
+]
 ---
+
+<div id="forecast-links" class="tabs">
+<span>
+<span style="opacity: 0.7">2020 FORECASTS</span>
+<img src="/election-2020/flag.gif" 
+    style="height: 32px; margin: -8px 0 -11px 6px;">
+</span>
+<a href="/projects/president-20/">President</a>
+<a href="/projects/us-house-20/" class="current">House</a>
+</div>
 
 <div id="chart_hist"></div>
 
@@ -92,7 +106,10 @@ positive effects (blue) mean that the firm overestimates Democratic support.
 <col width="8%">
 <col width="25%">
 <col width="25%">
+<thead>
 <tr><th>Firm</th><th>Polls</th><th colspan="2">House Effect</th></tr>
+</thead>
+<tbody></tbody>
 </table>
 
 <div style="height: 5em; border-bottom: 1px solid #777;"></div>
@@ -136,12 +153,24 @@ and the presidency currently, and whether it is a midterm election (along with
 some interaction terms). Like the prior model, the results model uses House
 elections since 1974 to make its predictions.
 
-Both linear models use Cauchy(0, 1) priors on the coefficients of centered and
-scaled predictors. Models were fit using [STAN](https://mc-stan.org). Model code 
+Both linear models use Cauchy(0, 2.5) priors on the coefficients of centered and
+scaled predictors. Models were fit using [Stan](https://mc-stan.org). Model code 
 and data are [available online](https://github.com/CoryMcCartan/us-house-20).
+[Email me](mailto:cmccartan@g.harvard.edu) with any questions.
 
 </div>
 
+<div class="link-banner">
+<span>JUMP TO</span>
+<a href="#">Summary</a>
+<a href="#how-the-odds-have-changed">Model history</a>
+<a href="#national-polling">National polling</a>
+<a href="#methodology">Methodology</a>
+
+</div>
+
+
+<script src="/election-2020/shared.js"></script>
 <script src="charts.js"></script>
 <script src="main.js"></script>
 <style>

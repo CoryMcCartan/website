@@ -24,7 +24,7 @@ a, a:visited
 a:hover
     color: $fg
 
-h1[id]::before
+h1[id]::before, h2[id]::before, h3[id]::before
   content: ''
   display: block
   height: $header-height + 0.2rem
@@ -93,11 +93,12 @@ svg text
 .tooltip
     z-index: 7
     position: absolute
-    background: #fffd
-    border-radius: 3px
+    background: #ffffffd4
+    border-radius: 2px
     font-size: 0.85rem
     padding: 0.5em
     top: 0
+    backdrop-filter: blur(2px)
 
 .scroll-interactive
     margin-bottom: 30vh
@@ -324,6 +325,9 @@ article .details
     margin: 0
 .project-list .subtitle
     margin: 0.5rem 0 0 
+
+.project-list .project.featured
+    border-top: 4px solid $fg
 
 
 // FOOTER

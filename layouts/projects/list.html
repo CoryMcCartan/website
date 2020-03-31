@@ -9,7 +9,7 @@
     </section>
     <section class="project-list">
         {{ range .Pages }}
-        <div class="project">
+        <div class="project {{ cond (isset .Params "featured") "featured" "" }}">
             <span class="date">{{ .Date.Format "2006" }}</span>
             <a href="{{ .RelPermalink }}">
                 <h2 class="project-title">{{ .Title }}</h2>

@@ -49,7 +49,7 @@ deaths worldwide.
 What does this mean for you, personally? Fill out the boxes below.
 
 <section class="interactive">
-
+<div class="sliders">
 <div class="slider-box">
 <b style="font-size: 1.3rem;">Infection rate</b>&nbsp;&nbsp;
 <input id="inf_rate" type="range" min=1 max=100 value=50 step=1 />
@@ -65,6 +65,7 @@ The numbers below assume that around half of those infected will not show sympto
 </div>
 What fraction of those who show symptoms will die. 
 Current estimates are 0.9&ndash;2.1%.
+</div>
 
 <h3>How many people do you know in each age group?</h3>
 <div id="cols">
@@ -228,5 +229,17 @@ input[type=range]::-moz-range-thumb {
     border-radius: 8px;
     background: #808fbb; 
     cursor: pointer; 
+}
+
+@media screen and (max-width: 750px) {
+    .sliders {
+        position: sticky;
+        background: #f4f4f4;
+        top: 50px;
+        padding-bottom: 0.5em;
+        border-bottom: 1px solid #666;
+        font-size: 0.95rem;
+        line-height: 1.1;
+    }
 }
 </style>

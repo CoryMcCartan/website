@@ -3,6 +3,7 @@ title: One Industrial Union Grand?
 description: A closer look at the size, strength, and structure of American labor.
 date: 2020-01-14
 slug: unions-2019
+featured: true
 images: 
     - /images/union-article-promo.png
 js: [

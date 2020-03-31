@@ -30,7 +30,7 @@
 
     <section class="projects project-list">
         {{ range first 5 (where .Site.RegularPages "Section" "projects") }}
-        <div class="project">
+        <div class="project {{ cond (isset .Params "featured") "featured" "" }}">
             <a href="{{ .RelPermalink }}">
                 <h2 class="project-title">{{ .Title }}</h2>
                 {{ with .Description }}

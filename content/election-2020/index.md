@@ -7,13 +7,13 @@ date: 2020-03-12
 ---
 
 <div class="promo">
-<img src="/election-2020/capitol.jpg">
-<a href="/projects/us-house-20/">House Forecast &raquo;</a>
+<img src="/election-2020/wh.jpg">
+<a href="/projects/president-20/">Presidential Forecast &raquo;</a>
 </div>
 
 <div class="promo">
-<img src="/election-2020/wh.jpg">
-<a class="broken" href="#">Presidential Forecast (Coming Soon)</a>
+<img src="/election-2020/capitol.jpg">
+<a href="/projects/us-house-20/">House Forecast &raquo;</a>
 </div>
 
 <div class="promo">

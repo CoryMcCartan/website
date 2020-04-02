@@ -7,7 +7,7 @@ date: 2020-03-30
 slug: president-20
 featured: true
 images:
-    - /election-2020/ch.jpg
+    - /election-2020/pres_promo.png
 js: [
     "https://d3js.org/d3.v5.min.js",
     "https://d3js.org/topojson.v2.min.js"
@@ -28,9 +28,9 @@ css: [
 <a href="/projects/us-house-20/">House</a>
 </div>
 
-<div id="chart_hist"></div>
 
-<section id="histogram"></section>
+<section id="categories"></section>
+
 <section class="banner">
 <span class="text"></span>
 <span class="updated"></span>
@@ -41,10 +41,7 @@ css: [
 Hover over a state to see the chances each candidate has of winning it, and
 click on a state to see more detailed forecasts.
 
-<section id="map">
-</section>
-
-<!--<h1>What does a <span id="prob_win"></span> chance feel like?</h1>-->
+<section id="map"></section>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
 <button id="sim_elec">Simulate an election</button>
@@ -57,6 +54,16 @@ winning, but what does that really mean? There is a wide range of possible
 outcomes, at the state level and nationally.  Click the button above to
 randomly simulate a possible election outcome. 
 
+### All the possible outcomes
+
+<section id="histogram"></section>
+
+The histogram above shows the distribution of electoral votes that the model
+is currently predicting. The wide range of possible outcomes reflects the 
+inherent uncertainty in predicting elections. The fact that small numbers of
+votes can flip a state from one candidate to another, along with all of that
+state's electoral votes, means that this distribution is very spiky, unlike
+a normal bell curve.
 
 # How the odds have changed
 
@@ -137,9 +144,10 @@ interval. The inner band shows a **50% credible interval**.
 # State forecasts
 
 The table below summarizes the race in every state, including the forecasted
-vote share, probability of winning, and some measurements of how important
-each state is to the overall race. You can click on the column headers in order
-to sort the table, or click on a state to see more details.
+vote share (excluding write-ins and third parties), probability of winning, and
+some measurements of how important each state is to the overall race. You can
+click on the column headers in order to sort the table, or click on a state to
+see more details.
 
 What does it mean to say that a state decided an election?  If we think about
 listing states in order of their support for the winning candidate, and then
@@ -197,7 +205,11 @@ Select a state to see detailed forecasts and how they've changed over time.
 
 <span id="selected_state"></span> has <b><span id="state_ev"></span> electoral
 votes</b> and voted for <span id="state_2016"></span> and 
-<span id="state_2012"></span>. <span id="state_polls"></span>
+<span id="state_2012"></span>. 
+<span hidden id="split_ev">The state awards two electoral votes to the statewide
+winner and one electoral vote to the winner of each of its congressional
+districts; this detail is not accounted for in the model.</span>
+<span id="state_polls"></span>
 
 <section id="state_history"></section>
 

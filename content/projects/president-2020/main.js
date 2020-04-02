@@ -11,6 +11,15 @@ async function main() {
         d.date = new Date(d.date + " 2:00 EDT");
         return d;
     });
+    estimates.states.map(d => {
+        if (d.prob >= 0.95) d.rating = -3;
+        else if (d.prob >= 0.8) d.rating = -2;
+        else if (d.prob >= 0.65) d.rating = -1;
+        else if (d.prob >= 0.35) d.rating = -0;
+        else if (d.prob >= 0.2) d.rating = 1;
+        else if (d.prob >= 0.05) d.rating = 2;
+        else d.rating = 3;
+    });
     window.estimates = estimates;
 
     fill_summary(estimates);
@@ -109,7 +118,7 @@ async function main() {
                 format: margin_rnd,
                 tooltip_format: margin,
                 today: Date.now(),
-                hrule_label: "",
+                hrule_label: "EVEN",
             });
         });
 
@@ -163,6 +172,7 @@ async function main() {
             setup_filter_sim(sims, key_states, "#state_buttons");
         });
 
+    chart_categories(estimates.states, "#categories");
     chart_histogram(estimates, "#histogram");
     table_states(estimates.states, "#states");
     table_firms(estimates.firm_effects, "#firms");
@@ -196,10 +206,11 @@ function fill_summary(raw_data) {
 
     $(".banner > .text").innerHTML = `
         <p><b style="color: ${dside ? BLUE : RED};">
-        ${dside ? "Joe Biden" : "Donald Trump"}</b> is expected to win 
-        <b>between ${Math.round(data.ev_q05)} and ${Math.round(data.ev_q95)} 
-        electoral votes</b>.</p>
-        <p>He has a <b>${frac} chance</b> of winning the presidency.</p>`;
+        ${dside ? "Joe Biden" : "Donald Trump"}</b> has a
+        <b>${frac} chance</b> of winning the presidency.</p>
+        <p>He is expected to win 
+        <b>between ${Math.round(data.ev_q05)} and ${Math.round(data.ev_q95)}</b> 
+        electoral votes.</p>`;
 
     let date = new Date(data.time);
     let dateStr = date.toLocaleString("en-US", {
@@ -269,6 +280,8 @@ function state_select(val) {
         }
     }
 
+    $("#split_ev").hidden = !(abbr == "NE" || abbr == "ME");
+
     $("#state_history").innerHTML = "";
     chart_line(data, "#state_history", "prob", false, {
         ymin: 0, ymax: 1.05,
@@ -277,7 +290,7 @@ function state_select(val) {
         hrule_label: "EVEN",
         h: bigScreen ? 300 : 220,
         title: "Chances of winning " + name,
-        format: pct,
+        format: d3.format(".0%"),
         tooltip_format: pct,
         halfwidth: true,
         refl: 1,
@@ -307,14 +320,13 @@ function state_select(val) {
         addl_left: 4,
         h: bigScreen ? 260 : 200,
         title: `Chances ${name} decides the elction`,
-        format: pct,
+        format: d3.format(".0%"),
         tooltip_format: pct,
         halfwidth: true,
         hrule: -1e-6, // weird bugfix
         color: "#666",
         refl: 0,
     });
-    let vp_fmt = x => x < 0.005 ? "<0.1" : d3.format(".1f")(x);
     chart_line(data, "#tipping_history", "rel_voter_power", false, {
         ymin: 0,
         ymax: 5,
@@ -323,8 +335,8 @@ function state_select(val) {
         hrule: 1,
         hrule_label: "AVERAGE",
         title: `Relative importance of ${name} voters`,
-        format: vp_fmt,
-        tooltip_format: vp_fmt,
+        format: d3.format(".1f"),
+        tooltip_format: x => x < 0.005 ? "<0.1" : d3.format(".1f")(x),
         halfwidth: true,
         color: "#666",
         refl: 0,

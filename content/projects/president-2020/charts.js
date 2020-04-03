@@ -109,7 +109,6 @@ function chart_categories(data, id) {
         .attr("fill", d => color(d.rating))
         .attr("stroke", BLK);
 
-    console.log(h/w);
     let fontSize = bigScreen ? d => 2 + (w/h)*0.25*(y(0) - y(d.h))
         : d => 6 + (w/h)*0.2*(y(0) - y(d.h));
     states.selectAll("text")
@@ -208,7 +207,7 @@ function chart_categories(data, id) {
         tt.style("visibility", "visible")
             .html(txt)
             .style("left", (mx - 50) + "px")
-            .style("bottom", (h - my + 25) + "px");
+            .style("bottom", (h - my + 15) + "px");
     });
     svg.on("mouseout", function() {
         tt.style("visibility", "hidden");
@@ -252,7 +251,7 @@ function chart_map(data, us, id) {
         .domain([0.0, 0.5])
         //.domain([3, 0.3])
         .range([RED, midpt]);
-    let color = x => x <= 0.5 ? color_gop(x) : color_dem(x);
+    window.color = x => x <= 0.5 ? color_gop(x) : color_dem(x);
     //let color = x => x > 0 ? color_gop(x) : color_dem(x);
 
     let st_feat = topojson.feature(us, us.objects.states).features;
@@ -280,7 +279,7 @@ function chart_map(data, us, id) {
         .attr("class", "tooltip")
         .style("visibility", "hidden");
 
-    states_hover.on("mousemove", function(d) {
+    let mmv = function(d) {
         let [mx, my] = d3.mouse(chart.node());
         if (mx < 40) mx = 40;
         if (mx > w - 120) mx = w - 120;
@@ -307,11 +306,16 @@ function chart_map(data, us, id) {
             .html(txt)
             .style("left", (mx - 50) + "px")
             .style("bottom", (h - my + 25) + "px");
-    });
-    chart.on("mouseout", function() {
+    };
+    let mout = function() {
         tt.style("visibility", "hidden");
         states_hover.style("stroke-width", "0");
-    });
+    };
+
+    states_hover.on("mousemove", mmv);
+    states_hover.on("touchmove", mmv);
+    chart.on("mouseout", mout);
+    chart.on("touchend", mout);
 
     states_hover.on("click", function(d) {
         state_select(data[idxs[d.id]].state);
@@ -440,7 +444,7 @@ function chart_histogram(data, id) {
         .classed("label", true)
         .attr("text-anchor", "middle")
         .attr("y", gap - 14)
-        .text(`${Math.floor(ev_exp)} EXPECTED`);
+        .text("EXPECTED");
 
     // CI line
     svg.append("line")

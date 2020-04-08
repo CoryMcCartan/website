@@ -290,7 +290,7 @@ opinion) is <b id="pres_appr"></b>.</li>
 </ul>
 
 These give us a prior expectation of the national popular (excluding write-ins
-and third parties) vote of <b id="natl_prior"></b>.
+and third parties) vote of <b id="natl_prior"></b> for Biden.
 
 The second part of the model is a prior guess about how the vote in each
 state will differ from the national vote.  The best predictor of this 

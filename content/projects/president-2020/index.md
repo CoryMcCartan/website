@@ -36,6 +36,7 @@ css: [
 <span class="updated"></span>
 </section>
 
+<!--
 <div class="editor-note">
 <h2>NOTE</h2>
 <p>
@@ -56,6 +57,7 @@ the estimates here will stabilize.
 3:22 p.m., April 19, 2020
 </div>
 </div>
+-->
 
 # The electoral map
 
@@ -135,7 +137,7 @@ The range will narrow as we approach the election, because we will have more
 information, and there will be less time for the race to be upended by an
 economic or political development.
 
-The outer band below is an **90% credible interval**, meaning that based on the
+The outer band above is an **90% credible interval**, meaning that based on the
 information available at the time the forecast was made, there was an 90%
 chance that the Democrats would win a number of seats somewhere in that
 interval. The inner band shows a **50% credible interval**.
@@ -153,7 +155,7 @@ The range will narrow as we approach the election, because we will have more
 information, and there will be less time for the race to be upended by an
 economic or political development.
 
-The outer band below is an **90% credible interval**, meaning that based on the
+The outer band above is an **90% credible interval**, meaning that based on the
 information available at the time the forecast was made, there was an 90%
 chance that the Democrats would win a number of seats somewhere in that
 interval. The inner band shows a **50% credible interval**.

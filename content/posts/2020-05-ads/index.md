@@ -3,7 +3,10 @@ title: "The Candidates are Rallying Their Bases"
 description: "Facebook ad spending reveals campaigns’ focus on fundraising over persuasion."
 date: 2020-05-09
 slug: ads
-summary: >
+summary: > 
+    Last week, Biden outspent Trump on Facebook by more than a 2-to-1 margin.
+    But per-state spending has little to do with how competitive each state is,
+    and everything to do with how many supportive voters live there.
 images:
     - ./2020/05/ads/promo.png
 ---

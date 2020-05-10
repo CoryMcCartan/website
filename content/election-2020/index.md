@@ -35,6 +35,7 @@ date: 2020-03-12
     width: 50%;
     max-width: 3in;
     border-radius: 8px 0 0 7px;
+    align-self: flex-start;
 }
 .promo a {
     padding: 1em;

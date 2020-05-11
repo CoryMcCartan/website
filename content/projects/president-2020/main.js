@@ -333,7 +333,7 @@ function state_select(val) {
     });
     chart_line(data, "#tipping_history", "rel_voter_power", false, {
         ymin: 0,
-        ymax: 5,
+        ymax: 6,
         h: bigScreen ? 260 : 200,
         addl_left: 4,
         hrule: 1,

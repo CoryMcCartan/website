@@ -167,8 +167,9 @@ async function main() {
     fetch(sims_url, fetch_opts)
         .then(r => r.json())
         .then(sims => {
-            sims = d3.shuffle(sims);
+            sims = d3.shuffle(sims.filter(x => x.ev==269));
 
+            window.sims = sims;
             window.sim_ctr = 0;
             $("#sim_elec").onclick = () => sim_election(sims, "#map");
             $("#reset_map").onclick = () => reset_map(estimates.states, "#map");

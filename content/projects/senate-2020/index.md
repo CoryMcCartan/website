@@ -18,7 +18,7 @@ css: [
 
 <div id="forecast-links" class="tabs">
 <span>
-<a href="/election-2020/" style="opacity: 0.7">2020 FORECASTS</a>
+<a href="/election-2020/" class="mainlink">2020 FORECASTS</a>
 <img src="/election-2020/flag.gif" 
     style="height: 32px; margin: -8px 0 -11px 6px;">
 </span>
@@ -107,7 +107,7 @@ interval. The inner band shows a **50% credible interval**.
 <div class="chart"></div>
 
 This chart shows the estimated margin in the national generic ballot (see more
-<a href="#national-polling">below</a>), and how it has changed over time.  The range will narrow
+<a href="#prior-model">below</a>), and how it has changed over time.  The range will narrow
 as we approach the election, because we will have more information, and there
 will be less time for the race to be upended by an economic or political
 development.
@@ -215,7 +215,7 @@ sections below provide more detail on each of these components.
 
 ### Prior model
 
-One of the best predictors of the national Senate race, a is the so-called
+One of the best predictors of the national Senate race is the so-called
 “generic ballot,” where polling firms ask voters which party they plan on
 voting for in their local House race.
 

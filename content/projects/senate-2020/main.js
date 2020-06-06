@@ -195,11 +195,10 @@ function fill_summary(raw_data) {
 
     $(".banner > .text").innerHTML = `
         <p>The <b style="color: ${dside ? BLUE : RED};">
-        ${dside ? "Democrats" : "Republicans"}</b> have a
-        <b>${frac} chance</b> of winning control of the Senate.</p>
-        <p>They are expected to win 
+        ${dside ? "Democrats" : "Republicans"}</b> are expected to win
         <b>between ${Math.round(data.s_q05)} and ${Math.round(data.s_q95)}</b> 
-        seats.</p>`;
+        seats.</p> <p>They have a 
+        <b>${frac} chance</b> of winning control of the Senate.</p>`;
 
     let date = new Date(data.time.replace(/\s/, "T") + "-04:00");
     let dateStr = date.toLocaleString("en-US", {
@@ -238,17 +237,22 @@ function race_select(val) {
         let n_polls = polls.filter(p => p.national == "FALSE" && 
                           estimates.races[+p.race-1].race == abbr &&
                           (+p.date + 14*1000*3600*24) >= Date.now()).length
+        let url_name = name == "Georgia (special)" ? "Georgia" : name;
+        let url = ("https://projects.fivethirtyeight.com/polls/senate/" 
+                   + url_name.toLowerCase().replace(/ /g, "-") + "/");
         switch (n_polls) {
             case 0:
                 $("#race_polls").innerHTML = `There have been no polls 
                 conducted in ${name} in the last two weeks.`; 
                 break;
             case 1:
-                $("#race_polls").innerHTML = `There has been one poll 
+                $("#race_polls").innerHTML = `There has been <a target="_blank"
+                href="${url}">one poll</a> 
                 conducted in ${name} in the last two weeks.`; 
                 break;
             default:
-                $("#race_polls").innerHTML = `There have been ${n_polls} polls 
+                $("#race_polls").innerHTML = `There have been <a target="_blank"
+                href="${url}">${n_polls} polls</a> 
                 conducted in ${name} in the last two weeks.`; 
                 break;
         }
@@ -270,8 +274,8 @@ function race_select(val) {
 
     chart_line(data, "#race_history", "dem", true, {
         title: "Projected vote margin in " + name,
-        ymin: 0.3,
-        ymax: 0.75,
+        ymin: Math.min(+data[0].dem_q05, 0.3),
+        ymax: Math.max(+data[0].dem_q95, 0.7),
         addl_left: 4,
         hrule: 0.5,
         hrule_label: "EVEN",

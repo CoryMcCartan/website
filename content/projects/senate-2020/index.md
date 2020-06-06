@@ -9,7 +9,6 @@ images:
     - /election-2020/capitol.jpg
 js: [
     "https://d3js.org/d3.v5.min.js",
-    "https://d3js.org/topojson.v2.min.js"
 ]
 css: [
     "/projects/senate-20/graphics.css",

@@ -269,17 +269,21 @@ function state_select(val) {
         let n_polls = polls.filter(p => p.national == "FALSE" && 
                           estimates.states[+p.state-1].state == abbr &&
                           (+p.date + 14*1000*3600*24) >= Date.now()).length
+        let url = ("https://projects.fivethirtyeight.com/polls/president-general/" 
+                   + name.toLowerCase().replace(/ /g, "-") + "/");
         switch (n_polls) {
             case 0:
                 $("#state_polls").innerHTML = `There have been no polls 
                 conducted in ${name} in the last two weeks.`; 
                 break;
             case 1:
-                $("#state_polls").innerHTML = `There has been one poll 
+                $("#state_polls").innerHTML = `There has been <a target="_blank" 
+                href="${url}">one poll</a> 
                 conducted in ${name} in the last two weeks.`; 
                 break;
             default:
-                $("#state_polls").innerHTML = `There have been ${n_polls} polls 
+                $("#state_polls").innerHTML = `There have been <a target="_blank" 
+                href="${url}">${n_polls} polls</a> 
                 conducted in ${name} in the last two weeks.`; 
                 break;
         }

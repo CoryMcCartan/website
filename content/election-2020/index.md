@@ -12,13 +12,13 @@ date: 2020-03-12
 </div>
 
 <div class="promo">
-<img src="/election-2020/capitol.jpg">
-<a href="/projects/us-house-20/">House Forecast &raquo;</a>
+<img src="/election-2020/senate.jpg">
+<a href="/projects/senate-20/">Senate Forecast &raquo;</a>
 </div>
 
 <div class="promo">
-<img src="/election-2020/senate.jpg">
-<a class="broken" href="#">Senate Forecast (Someday)</a>
+<img src="/election-2020/capitol.jpg">
+<a href="/projects/us-house-20/">House Forecast &raquo;</a>
 </div>
 
 <style>
@@ -33,7 +33,7 @@ date: 2020-03-12
 }
 .promo img {
     width: 50%;
-    max-width: 3in;
+    max-width: 2.25in;
     border-radius: 8px 0 0 7px;
     align-self: flex-start;
 }

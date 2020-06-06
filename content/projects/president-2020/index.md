@@ -20,11 +20,12 @@ css: [
 
 <div id="forecast-links" class="tabs">
 <span>
-<span style="opacity: 0.7">2020 FORECASTS</span>
+<a href="/election-2020/" style="opacity: 0.7">2020 FORECASTS</a>
 <img src="/election-2020/flag.gif" 
     style="height: 32px; margin: -8px 0 -11px 6px;">
 </span>
 <a href="/projects/president-20/" class="current">President</a>
+<a href="/projects/senate-20/">Senate</a>
 <a href="/projects/us-house-20/">House</a>
 </div>
 
@@ -50,7 +51,7 @@ chances of winning the election.
 The pandemic and its economic fallout have caused a lot to change very quickly,
 just as the presidential race moves from the primary to the general election
 stage.  This has necessarily, and correctly, injected more uncertainty and
-swings into the model's forecasts.  As more economic and polling data arrive,
+swings into the model&rsquo;s forecasts.  As more economic and polling data arrive,
 the estimates here will stabilize. 
 </p>
 <div style="color: #877; font-size: 0.85rem; text-align: right;">
@@ -85,14 +86,14 @@ The histogram above shows the distribution of electoral votes that the model
 is currently predicting. The wide range of possible outcomes reflects the 
 inherent uncertainty in predicting elections. The fact that small numbers of
 votes can flip a state from one candidate to another, along with all of that
-state's electoral votes, means that this distribution is very spiky, unlike
+state&rsquo;s electoral votes, means that this distribution is very spiky, unlike
 a normal bell curve.
 
 # How the odds have changed
 
 The model works by first building a [structural forecast](#prior-model) for the
 national race and the race in each state, based on economic indicators, the
-president's approval rating, past election results, the home states of each of
+president&rsquo;s approval rating, past election results, the home states of each of
 the candidates, and incumbency and regional effects. 
 
 The model then uses state and national polls to [estimate public
@@ -139,7 +140,7 @@ economic or political development.
 
 The outer band above is an **90% credible interval**, meaning that based on the
 information available at the time the forecast was made, there was an 90%
-chance that the Democrats would win a number of seats somewhere in that
+chance that Biden would win a number of electoral votes somewhere in that
 interval. The inner band shows a **50% credible interval**.
 </section>
 
@@ -157,7 +158,7 @@ economic or political development.
 
 The outer band above is an **90% credible interval**, meaning that based on the
 information available at the time the forecast was made, there was an 90%
-chance that the Democrats would win a number of seats somewhere in that
+chance that Biden would earn a popular vote total somewhere in that
 interval. The inner band shows a **50% credible interval**.
 
 </section>
@@ -185,7 +186,7 @@ voters in that state, we get the chance that a single voter will decide the
 election. If we compare this chance to the average chance across the country,
 we get a measure of how much relative power voters in every state have to
 determine the election.  Small states where the election is close have the most
-powerful voters, whereas large states or states where the election isn't very
+powerful voters, whereas large states or states where the election isn&rsquo;t very
 close have the least powerful voters.
 
 <table id="states" class="minim">
@@ -221,7 +222,7 @@ Chance&nbsp;of deciding election</th>
 </div>
 
 
-Select a state to see detailed forecasts and how they've changed over time.
+Select a state to see detailed forecasts and how they&rsquo;ve changed over time.
 
 <select id="state">
 </select>
@@ -245,7 +246,7 @@ election" and "relative voter importance" mean.
 # Possible scenarios
 
 Usually, whichever candidate wins the popular vote wins the presidency, but as
-the 2016 election showed, that's not always the case---the electoral vote winner
+the 2016 election showed, that&rsquo;s not always the case---the electoral vote winner
 could have less than a majority of the popular vote.  And there might not even
 be a clear winner of the Electoral College on election night:
 
@@ -261,7 +262,7 @@ could take weeks. Think Florida in 2000.
 </li>
 </ul>
 
-As for the other scenarios, it's much more likely that Biden will win the 
+As for the other scenarios, it&rsquo;s much more likely that Biden will win the 
 popular vote but lose the election, like Clinton in 2016, than that the same
 will happen to Trump.
 
@@ -270,7 +271,7 @@ will happen to Trump.
 ### What happens if&hellip; ?
 
 There are many paths to 270 electoral votes. No one state is critical for a 
-candidate to win. But states' outcomes are highly correlated with one another,
+candidate to win. But states&rsquo; outcomes are highly correlated with one another,
 and winning one state can be a sign of strength elsewhere. 
 
 The buttons below are for the fifteen states most likely to decide the
@@ -333,12 +334,12 @@ estimate public opinion for each 3-day period of the race up to the present
 day, and then forecasts how it will change toward November. 
 
 Since Super Tuesday, <b id="n_polls"></b> polls have been conducted. Polls
-conducted early on in the race (especially national polls) don't have much
-impact on the overall forecast, since voters' opinions will change a lot
+conducted early on in the race (especially national polls) don&rsquo;t have much
+impact on the overall forecast, since voters&rsquo; opinions will change a lot
 before November. But as we get closer to Election Day, the polls become more
 informative about the final result.
 
-The chart below shows the model's estimates of voters' margin of support for 
+The chart below shows the model&rsquo;s estimates of voters&rsquo; margin of support for 
 the candidates for each point in the race. The rightmost values on this chart
 are the election-day popular vote forecast.
 
@@ -353,7 +354,7 @@ more Democratic.
 In addition, certain polling firms have a pattern of producing polls that lean
 toward one party or another.  These "house effects" are estimated by the model
 and used to make adjustments in estimating overall public opinion.  Negative
-house effects (red) mean that the firm's polls overestimate Republican support;
+house effects (red) mean that the firm&rsquo;s polls overestimate Republican support;
 positive effects (blue) mean that the firm overestimates Democratic support.
 
 <table id="firms">
@@ -376,7 +377,7 @@ positive effects (blue) mean that the firm overestimates Democratic support.
 <div class="details">
 
 The above [components section](#model-components) lays out the general overview
-of the model. All models operate on the logit scale.  The prior models for the
+of the model. All submodels operate on the logit scale.  The prior models for the
 national vote and state differentials are linear models (with random effects
 for the state model); Cauchy(0, 2.5) priors on scaled and centered predictors
 were used. The random effects in the state prior model give the predicted state
@@ -385,9 +386,9 @@ sensitive to the model specification but does have an impact on final inferences
 More robust estimation of the state result covariances is an area in which the
 model could be improved.
 
-The polling model is an extension of a 2016 election model by 
+The polling model is similar to a 2016 election model by 
 [Pierre-Antoine Kremp](https://www.slate.com/features/pkremp_forecast/report.html),
-which in turn is built on Drew Linzer's [dynamic Bayesian forecasting 
+which in turn is built on Drew Linzer&rsquo;s [dynamic Bayesian forecasting 
 model](https://votamatic.org/wp-content/uploads/2013/07/Linzer-JASA13.pdf).
 In contrast to those models, this one incorporates a critical adjustment for
 the bias of registered-voter and all-adult polls, uses past election data
@@ -397,7 +398,7 @@ and state outcomes, built from the linear models described above.
 Essentially, there is a latent national voter intent, and latent state
 differentials (how much more or less Democratic the state is than the national
 vote), which evolve as a random walk with Gaussian increments in 3-day and
-3-week steps (the states' walk has larger steps for computational reasons).
+3-week steps (the states&rsquo; walk has larger steps for computational reasons).
 The national and state priors become priors on the final step of the random
 walk, so prior information is percolated backwards in time.
 Student-t-distributed increments were also explored but the data were not very
@@ -406,14 +407,14 @@ changed very little.
 
 Each poll is considered to be a binomial draw whose probability depends on
 the latent national and state (if a state poll) voter intent, adjusted for the
-polling firm's house effects, the type of respondents (registered voters,
+polling firm&rsquo;s house effects, the type of respondents (registered voters,
 likely voters, or all adults), poll-specific error, and state, regional, and
 national polling error.
 
 Each of these adjustments is a parameter that the model estimates.  Polling
 error cannot be estimated from polling data, and essentially just adds noise to
 the model. The distribution of these polling errors is estimated from past
-elections’ polling errors. For computational reasons, states' polling errors
+elections’ polling errors. For computational reasons, states&rsquo; polling errors
 after accounting for national and regional error are assumed to be i.i.d.
 This yields pairwise correlations of state polling errors of around 0.7. In
 reality, polling errors (and final outcomes; see above) are likely to be
@@ -423,7 +424,7 @@ remains an area of potential improvement.
 Election outcomes are simulated by looking at the Monte Carlo draws of the latent 
 state and national intent parameters on Election Day. The congressional-district 
 based electoral vote allocation rules in Nebraska and Maine are not modelled;
-elections in which one of the states' votes go to a candidate other than the 
+elections in which one of the states&rsquo; votes go to a candidate other than the 
 statewide winner are unlikely to be elections in which the outcome is decided 
 by a single electoral vote.
 
@@ -434,7 +435,7 @@ in contrast to all other major polling aggregators in 2016.  Of course,
 hindsight is 20/20, and some knowledge about the final result inevitably crept
 into model development and testing. But in contrast to most aggregators,
 the model is fully Bayesian and therefore optimally blends structural forecasts
-like Abramowitz's time-for-change model with polling data, rather than making
+like Abramowitz&rsquo;s time-for-change model with polling data, rather than making
 [ad-hoc weighting adjustments](https://fivethirtyeight.com/features/a-users-guide-to-fivethirtyeights-2016-general-election-forecast/#attachment_118876)
 or [ignoring the latter entirely](https://www.nytimes.com/interactive/2016/upshot/presidential-polls-forecast.html).
 

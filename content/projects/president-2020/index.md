@@ -37,7 +37,7 @@ css: [
 <span class="updated"></span>
 </section>
 
-<!-- -->
+<!-- 
 <div class="editor-note">
 <h2>NOTE</h2>
 <p>
@@ -57,7 +57,7 @@ latter from the Federal Reserve forecasts.
 2:40 p.m., July 30, 2020
 </div>
 </div>
-<!-- -->
+-->
 
 # The electoral map
 

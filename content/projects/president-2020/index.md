@@ -59,6 +59,19 @@ latter from the Federal Reserve forecasts.
 </div>
 -->
 
+<div class="editor-note">
+<h2>NEW</h2>
+<p>
+Explore scenarios and track each candidate’s chances of claiming the
+presidency, depending on which states they win—and by how much.
+</p>
+<p style="text-align: center">
+<b><a href="/2020/11/election-night/" target="_blank">
+    Conditional Forecasts &raquo;
+</a></b>
+</p>
+</div>
+
 # The electoral map
 
 Hover over a state to see the chances each candidate has of winning it, and
@@ -272,6 +285,13 @@ will happen to Trump.
 There are many paths to 270 electoral votes. No one state is critical for a 
 candidate to win. But states&rsquo; outcomes are highly correlated with one another,
 and winning one state can be a sign of strength elsewhere. 
+
+<p style="text-align: center;">
+<b><a href="/2020/11/election-night/" target="_blank">
+    <span class="leadin">Explore in detail:</span> 
+    Conditional Forecasts &raquo;
+</a></b>
+</p>
 
 The buttons below are for the fifteen states most likely to decide the
 election.  Click them to cycle through hypothetical winners and play out

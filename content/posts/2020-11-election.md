@@ -13,7 +13,17 @@ images:
     - ./images/enight-promo.png
 ---
 
+<b><a href="/projects/president-20/" target="_blank">Main presidential forecast &raquo;</a></b>
+
+<b id="loading">This page may take a few seconds to load...</b>
+
 <iframe id="elec-embed" src="https://corymccartan.shinyapps.io/election2020/"></iframe>
+
+<script>
+document.querySelector("#elec-embed").onload = function() {
+    document.querySelector("#loading").style.display = "none";
+};
+</script>
 
 <style>
 #elec-embed {
